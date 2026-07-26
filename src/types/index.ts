@@ -1,3 +1,5 @@
+import type { SkillIconName } from '../utils/skillIcons'
+
 export interface Experience {
   id: string
   company: string
@@ -22,12 +24,13 @@ export interface Project {
 
 export interface Skill {
   category: string
+  icon: SkillIconName
   items: SkillItem[]
 }
 
 export interface SkillItem {
   name: string
-  icon: string  // Icon from lucide-react (e.g., 'Code', 'Database', 'Cpu', etc.)
+  icon: SkillIconName
 }
 
 export interface BlogPost {

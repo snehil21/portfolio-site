@@ -10,11 +10,11 @@ export const SECTION_CONTENT = {
   },
   skills: {
     title: 'Tech Stack & Skills',
-    subtitle: 'Technologies and tools I work with daily',
+    subtitle: 'Technologies and concepts from production work, projects, and focused coursework',
   },
   experience: {
     title: 'Experience',
-    subtitle: 'My professional journey building scalable systems and leading teams',
+    subtitle: 'My professional journey across backend systems, cloud workflows, and user-facing products',
   },
   projects: {
     title: 'Featured Work',
@@ -35,7 +35,7 @@ export const SECTION_CONTENT = {
   },
   contact: {
     title: 'Get In Touch',
-    subtitle: 'Have a project in mind or just want to chat? Feel free to reach out!',
+    subtitle: 'Interested in backend engineering, distributed systems, or developer tools? Let\'s connect.',
     emailLabel: 'Email',
     phoneLabel: 'Phone',
     locationLabel: 'Location',
@@ -53,6 +53,6 @@ export const SECTION_COPY = {
   contact: {
     email: 'snehil.kumar09@gmail.com',
     phone: '+1 (234) 567-890',
-    location: 'San Francisco, CA',
+    location: 'Bengaluru, Karnataka, India',
   },
 }

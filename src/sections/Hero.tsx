@@ -116,14 +116,15 @@ export default function Hero() {
                 </motion.span>
               </motion.button>
               <motion.a
-                href="/resume.pdf"
+                href={HERO_DATA.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="button-secondary"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                download
               >
-                Download Resume
+                View Resume
               </motion.a>
               <motion.button
                 onClick={() => navigate('/contact')}
@@ -142,7 +143,7 @@ export default function Hero() {
               variants={itemVariants}
             >
               <motion.a
-                href="https://github.com"
+                href="https://github.com/snehil21"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
@@ -154,7 +155,7 @@ export default function Hero() {
                 <Github className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/snehilkumarr/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
@@ -166,7 +167,7 @@ export default function Hero() {
                 <Linkedin className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="https://twitter.com"
+                href="https://x.com/Snehilthaakur"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
@@ -178,7 +179,7 @@ export default function Hero() {
                 <Twitter className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="mailto:snehil@example.com"
+                href="mailto:snehil.kumar09@gmail"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                 title="Email"
                 whileHover={{ scale: 1.2, rotate: 360 }}
@@ -214,18 +215,18 @@ export default function Hero() {
                 transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
               />
               
-              {/* Avatar placeholder */}
+              {/* Profile photo */}
               <motion.div 
-                className="absolute inset-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center"
+                className="absolute inset-8 overflow-hidden rounded-3xl"
                 whileHover={{ scale: 1.05 }}
               >
-                <motion.span 
-                  className="text-6xl font-bold text-white"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  SK
-                </motion.span>
+                <img
+                  src="/snehil-kumar-profile.png"
+                  alt="Snehil Kumar"
+                  width="192"
+                  height="192"
+                  className="w-full h-full object-cover object-top"
+                />
               </motion.div>
             </motion.div>
           </motion.div>

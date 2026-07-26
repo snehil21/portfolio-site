@@ -1,4 +1,3 @@
-import React from 'react'
 import Experience from '@sections/Experience'
 import Section from '@components/Section'
 import Container from '@components/Container'

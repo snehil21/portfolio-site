@@ -1,29 +1,9 @@
 import { motion } from 'framer-motion'
-import * as Icons from 'lucide-react'
 import Container from '@components/Container'
 import Section from '@components/Section'
 import { SKILLS } from '@data/portfolio'
 import { SECTION_CONTENT } from '@data/sections'
-
-const iconMap: Record<string, any> = {
-  Code: Icons.Code,
-  Database: Icons.Database,
-  GitBranch: Icons.GitBranch,
-  Zap: Icons.Zap,
-  Network: Icons.Network,
-  Workflow: Icons.Workflow,
-  Link: Icons.Link,
-  Smartphone: Icons.Smartphone,
-  Palette: Icons.Palette,
-  Container: Icons.Container,
-  Box: Icons.Box,
-  Cloud: Icons.Cloud,
-  Settings: Icons.Settings,
-  Search: Icons.Search,
-  MessageSquare: Icons.MessageSquare,
-  Activity: Icons.Activity,
-  Terminal: Icons.Terminal,
-}
+import { SKILL_ICON_MAP } from '@utils/skillIcons'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -83,7 +63,7 @@ export default function Skills() {
           viewport={{ once: true }}
         >
           {SKILLS.map((skillGroup) => {
-            const IconComponent = iconMap[skillGroup.items[0]?.icon] || Icons.Code
+            const IconComponent = SKILL_ICON_MAP[skillGroup.icon]
             return (
               <motion.div
                 key={skillGroup.category}
@@ -96,7 +76,10 @@ export default function Skills() {
                   whileHover={{ x: 5 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <IconComponent className="w-5 h-5 text-primary-500" />
+                  <IconComponent
+                    aria-hidden="true"
+                    className="w-5 h-5 text-primary-500"
+                  />
                   {skillGroup.category}
                 </motion.h3>
                 <motion.div
@@ -106,7 +89,7 @@ export default function Skills() {
                   animate="visible"
                 >
                   {skillGroup.items.map((skill, idx) => {
-                    const SkillIcon = iconMap[skill.icon] || Icons.Code
+                    const SkillIcon = SKILL_ICON_MAP[skill.icon]
                     return (
                       <motion.div
                         key={skill.name}
@@ -120,7 +103,10 @@ export default function Skills() {
                             whileHover={{ rotate: 360 }}
                             transition={{ duration: 0.6 }}
                           >
-                            <SkillIcon className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                            <SkillIcon
+                              aria-hidden="true"
+                              className="w-5 h-5 text-primary-500 flex-shrink-0"
+                            />
                           </motion.div>
                           <span className="font-medium text-sm">{skill.name}</span>
                         </div>

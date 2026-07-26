@@ -1,4 +1,3 @@
-import React from 'react'
 import Projects from '@sections/Projects'
 import Skills from '@sections/Skills'
 import Section from '@components/Section'

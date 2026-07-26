@@ -39,13 +39,23 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link
+            to="/"
+            aria-label="Go to the home page"
+            className="flex items-center space-x-2"
+          >
             <motion.div 
-              className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center"
-              whileHover={{ rotate: 180, scale: 1.1 }}
+              className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-primary-500/70 shadow-sm"
+              whileHover={{ scale: 1.08 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
-              <span className="text-white font-bold text-lg">SK</span>
+              <img
+                src="/snehil-kumar-profile.png"
+                alt="Snehil Kumar"
+                width="36"
+                height="36"
+                className="w-full h-full object-cover object-top origin-top scale-[1.45]"
+              />
             </motion.div>
             <motion.span 
               className="hidden sm:block font-bold text-dark-900 dark:text-white"
