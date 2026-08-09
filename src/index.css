@@ -16,7 +16,7 @@ html {
 
 /* Base styles */
 body {
-  @apply font-sans antialiased;
+  @apply font-sans antialiased overflow-x-hidden;
 }
 
 /* Custom scrollbar */
@@ -62,15 +62,15 @@ body {
 }
 
 .section-container {
-  @apply max-w-7xl mx-auto px-4 py-20 sm:py-24;
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 .section-title {
-  @apply text-4xl sm:text-5xl font-bold mb-4;
+  @apply text-3xl sm:text-4xl lg:text-5xl font-bold mb-4;
 }
 
 .section-subtitle {
-  @apply text-lg text-dark-600 dark:text-dark-400 max-w-2xl;
+  @apply text-base sm:text-lg text-dark-600 dark:text-dark-400 max-w-2xl;
 }
 
 /* Animations */

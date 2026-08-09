@@ -31,7 +31,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || isOpen
           ? 'glass-effect border-b border-dark-200 dark:border-dark-700'
           : 'bg-transparent'
       }`}
@@ -124,6 +124,8 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
             {/* Mobile menu button */}
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isOpen}
               className="md:hidden p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}

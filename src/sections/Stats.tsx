@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function Stats() {
   return (
-    <Section id="stats" className="bg-dark-50 dark:bg-dark-800/50 py-20 sm:py-24">
+    <Section id="stats" className="bg-dark-50 dark:bg-dark-800/50 py-14 sm:py-20 lg:py-24">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,20 +35,20 @@ export default function Stats() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title text-center mb-2">{SECTION_CONTENT.stats.title}</h2>
-          <p className="section-subtitle text-center mb-12">
+          <p className="section-subtitle text-center mb-8 sm:mb-12 mx-auto">
             {SECTION_CONTENT.stats.subtitle}
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
           <motion.div
-            className="overflow-x-auto"
+            className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <table className="w-full">
+            <table className="w-full min-w-[680px]">
               <thead>
                 <tr className="border-b border-dark-300 dark:border-dark-600">
                   <th className="text-left px-4 py-3 font-semibold text-dark-700 dark:text-dark-300">{SECTION_CONTENT.stats.tableHeaders.platform}</th>

@@ -27,9 +27,9 @@ const containerVariants = {
 
 export default function About() {
   return (
-    <Section id="about" className="bg-dark-50 dark:bg-dark-800/50 py-20 sm:py-24">
+    <Section id="about" className="bg-dark-50 dark:bg-dark-800/50 py-14 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-12">
           {/* Left side */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -60,7 +60,7 @@ export default function About() {
 
           {/* Right side */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

@@ -34,23 +34,18 @@ export default function Projects() {
   const displayed = filter === 'featured' ? featured : PROJECTS
 
   return (
-    <Section id="projects" className="py-20 sm:py-24">
+    <Section id="projects" className="py-14 sm:py-20 lg:py-24">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           <h2 className="section-title">{SECTION_CONTENT.projects.title}</h2>
-          <p className="section-subtitle mb-12">
+          <p className="section-subtitle mb-8 sm:mb-12">
             {SECTION_CONTENT.projects.subtitle}
           </p>
-        </motion.div>
+        </div>
 
         {/* Filter buttons */}
         <motion.div 
-          className="flex gap-3 mb-8"
+          className="flex flex-col sm:flex-row gap-3 mb-8"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -58,7 +53,7 @@ export default function Projects() {
         >
           <motion.button
             onClick={() => setFilter('all')}
-            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            className={`w-full sm:w-auto px-4 py-2 rounded-lg font-medium transition-all ${
               filter === 'all'
                 ? 'button-primary'
                 : 'button-secondary'
@@ -70,7 +65,7 @@ export default function Projects() {
           </motion.button>
           <motion.button
             onClick={() => setFilter('featured')}
-            className={`px-4 py-2 rounded-lg font-medium transition-all ${
+            className={`w-full sm:w-auto px-4 py-2 rounded-lg font-medium transition-all ${
               filter === 'featured'
                 ? 'button-primary'
                 : 'button-secondary'
@@ -84,7 +79,7 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -100,11 +95,11 @@ export default function Projects() {
             >
               {/* Header */}
               <motion.div 
-                className="p-6 border-b border-dark-200 dark:border-dark-700"
+                className="p-4 sm:p-6 border-b border-dark-200 dark:border-dark-700"
                 whileHover={{ backgroundColor: 'rgba(99, 102, 241, 0.03)' }}
               >
                 <motion.h3 
-                  className="text-xl font-bold mb-2"
+                  className="text-lg sm:text-xl font-bold mb-2"
                   whileHover={{ x: 5 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
@@ -115,12 +110,7 @@ export default function Projects() {
                 </p>
 
                 {/* Problem & Solution */}
-                <motion.div 
-                  className="space-y-2 text-sm"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
+                <div className="space-y-2 text-sm">
                   <div>
                     <span className="font-semibold text-dark-700 dark:text-dark-300">
                       Problem:
@@ -137,11 +127,11 @@ export default function Projects() {
                       {project.solution}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
 
               {/* Tech Stack */}
-              <div className="px-6 py-4 border-b border-dark-200 dark:border-dark-700">
+              <div className="px-4 sm:px-6 py-4 border-b border-dark-200 dark:border-dark-700">
                 <motion.div 
                   className="flex flex-wrap gap-2"
                   initial={{ opacity: 0 }}
@@ -165,7 +155,7 @@ export default function Projects() {
 
               {/* Links */}
               <motion.div 
-                className="px-6 py-4 flex gap-3 mt-auto"
+                className="px-4 sm:px-6 py-4 flex gap-3 mt-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
