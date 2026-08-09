@@ -123,6 +123,7 @@ export const SKILLS: Skill[] = [
     items: [
       { name: 'C++', icon: 'SiCplusplus' },
       { name: 'Java', icon: 'FaJava' },
+      { name: 'Python', icon: 'SiPython' },
       { name: 'JavaScript', icon: 'SiJavascript' },
       { name: 'TypeScript', icon: 'SiTypescript' },
       { name: 'SQL', icon: 'Database' },
@@ -195,6 +196,27 @@ export const SKILLS: Skill[] = [
 export const PROJECTS: Project[] = [
   {
     id: '1',
+    title: 'DLQ Triage Assistant - AI-Assisted Payment Failure Analysis',
+    description: 'A local payment-failure triage system that produces safe, human-reviewed recovery recommendations',
+    problem: 'Failed payment messages can contain incomplete or ambiguous evidence, making automatic retries risky and manual DLQ investigation slow',
+    solution: 'Built a Spring Boot payment worker with Floci-hosted SQS queues and Terraform, plus a Python LangGraph workflow that combines deterministic rules with local Ollama analysis and safety checks',
+    tech: [
+      'Java 21',
+      'Spring Boot',
+      'Python',
+      'Amazon SQS',
+      'Terraform',
+      'Floci',
+      'LangChain',
+      'LangGraph',
+      'Ollama',
+      'FastAPI',
+    ],
+    github: 'https://github.com/snehil21/dlq-triage-assistant',
+    featured: true,
+  },
+  {
+    id: '2',
     title: 'TaskFlow - Team Task Management',
     description: 'A full-stack project and task management system with secure authentication, team assignments, filtering, statistics, and optimistic updates',
     problem: 'Teams need a secure shared workspace to organize projects, assign work, and track task status and priority',
@@ -213,7 +235,7 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
-    id: '2',
+    id: '3',
     title: 'Performance Review System',
     description: 'A role-based full-stack platform for managing employees, assigning performance reviews, collecting feedback, and tracking status and due dates',
     problem: 'Manual review workflows make reviewer assignments, deadlines, feedback, and progress difficult to manage consistently',
@@ -229,16 +251,6 @@ export const PROJECTS: Project[] = [
       'Docker',
     ],
     github: 'https://github.com/snehil21/Performance-Review-System',
-    featured: true,
-  },
-  {
-    id: '3',
-    title: 'ResumeCraft - Professional Resume Builder',
-    description: 'A responsive resume builder for composing, arranging, previewing, and downloading professional resumes',
-    problem: 'Creating a polished resume often requires repetitive formatting and layout work',
-    solution: 'Built a React application with structured resume sections, drag-and-drop ordering, responsive layouts, and download support',
-    tech: ['React', 'JavaScript', 'HTML5', 'CSS3'],
-    github: 'https://github.com/snehil21/ResumeCraft',
     featured: true,
   },
 ]
