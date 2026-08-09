@@ -47,12 +47,15 @@ export default function Hero() {
   }, [])
 
   return (
-    <Section id="hero" className="min-h-screen flex items-center pt-20">
-      <Container className="py-0">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <Section
+      id="hero"
+      className="min-h-[100svh] flex items-center pt-24 pb-12 sm:pb-16 md:py-24"
+    >
+      <Container>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left side - Text */}
           <motion.div
-            className="space-y-6"
+            className="space-y-5 sm:space-y-6 text-center md:text-left"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -67,13 +70,13 @@ export default function Hero() {
                 Welcome 👋
               </motion.p>
               <motion.h1 
-                className="text-5xl md:text-6xl font-bold leading-tight mb-2"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-2"
                 variants={heroTitleVariants}
               >
                 {HERO_DATA.name}
               </motion.h1>
               <motion.div 
-                className="text-2xl md:text-3xl font-semibold h-12 flex items-center overflow-hidden"
+                className="text-xl sm:text-2xl lg:text-3xl font-semibold min-h-14 sm:min-h-12 flex items-center justify-center md:justify-start leading-tight"
                 key={currentRole}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -86,7 +89,7 @@ export default function Hero() {
 
             {/* Tagline and Intro */}
             <motion.div variants={itemVariants}>
-              <p className="text-xl text-dark-600 dark:text-dark-400">
+              <p className="text-lg sm:text-xl text-dark-600 dark:text-dark-400">
                 {HERO_DATA.tagline}
               </p>
               <p className="text-dark-600 dark:text-dark-400 mt-4 leading-relaxed">
@@ -96,12 +99,12 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4"
               variants={itemVariants}
             >
               <motion.button
                 onClick={() => navigate('/projects')}
-                className="button-primary group cursor-pointer"
+                className="button-primary group cursor-pointer w-full sm:w-auto"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
@@ -119,7 +122,7 @@ export default function Hero() {
                 href={HERO_DATA.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button-secondary"
+                className="button-secondary w-full sm:w-auto text-center"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
@@ -128,7 +131,7 @@ export default function Hero() {
               </motion.a>
               <motion.button
                 onClick={() => navigate('/contact')}
-                className="button-outline cursor-pointer"
+                className="button-outline cursor-pointer w-full sm:w-auto"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
@@ -139,7 +142,7 @@ export default function Hero() {
 
             {/* Social Links */}
             <motion.div 
-              className="flex gap-4 pt-4"
+              className="flex justify-center md:justify-start gap-4 pt-2 sm:pt-4"
               variants={itemVariants}
             >
               <motion.a
@@ -234,7 +237,7 @@ export default function Hero() {
 
         {/* Scroll indicator */}
         <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="hidden sm:block absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >

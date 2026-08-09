@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function Experience() {
   return (
-    <Section id="experience" className="py-20 sm:py-24">
+    <Section id="experience" className="py-14 sm:py-20 lg:py-24">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,13 +35,13 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">{SECTION_CONTENT.experience.title}</h2>
-          <p className="section-subtitle mb-12">
+          <p className="section-subtitle mb-8 sm:mb-12">
             {SECTION_CONTENT.experience.subtitle}
           </p>
         </motion.div>
 
         <motion.div
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -50,17 +50,17 @@ export default function Experience() {
           {EXPERIENCES.map((exp) => (
             <motion.div
               key={exp.id}
-              className="glass-effect rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-dark-200 dark:border-dark-700 hover:border-primary-500/50"
+              className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all duration-300 border border-dark-200 dark:border-dark-700 hover:border-primary-500/50"
               variants={itemVariants}
               whileHover={{ y: -5 }}
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h3 className="text-2xl font-bold">{exp.role}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">{exp.role}</h3>
                   <motion.p 
                     className="text-primary-500 font-medium"
                     whileHover={{ x: 5 }}
@@ -70,7 +70,7 @@ export default function Experience() {
                   </motion.p>
                 </motion.div>
                 <motion.span 
-                  className="text-sm text-dark-600 dark:text-dark-400 px-3 py-1 rounded-full bg-dark-100 dark:bg-dark-700"
+                  className="self-start text-sm text-dark-600 dark:text-dark-400 px-3 py-1 rounded-full bg-dark-100 dark:bg-dark-700"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >

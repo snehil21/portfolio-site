@@ -41,7 +41,7 @@ const skillVariants = {
 
 export default function Skills() {
   return (
-    <Section id="skills" className="bg-dark-50 dark:bg-dark-800/50 py-20 sm:py-24">
+    <Section id="skills" className="bg-dark-50 dark:bg-dark-800/50 py-14 sm:py-20 lg:py-24">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,13 +50,13 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">{SECTION_CONTENT.skills.title}</h2>
-          <p className="section-subtitle mb-12">
+          <p className="section-subtitle mb-8 sm:mb-12">
             {SECTION_CONTENT.skills.subtitle}
           </p>
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -67,12 +67,12 @@ export default function Skills() {
             return (
               <motion.div
                 key={skillGroup.category}
-                className="glass-effect rounded-xl p-6 hover:shadow-lg transition-shadow"
+                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg transition-shadow"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
                 <motion.h3 
-                  className="text-xl font-bold mb-4 flex items-center gap-2"
+                  className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2"
                   whileHover={{ x: 5 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >

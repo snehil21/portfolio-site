@@ -170,7 +170,7 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" className="py-20 sm:py-24">
+    <Section id="contact" className="py-14 sm:py-20 lg:py-24">
       <Container>
         <div className="max-w-3xl mx-auto">
           <motion.div
@@ -180,12 +180,12 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="section-title text-center">{SECTION_CONTENT.contact.title}</h2>
-            <p className="section-subtitle text-center mb-12">
+            <p className="section-subtitle text-center mb-8 sm:mb-12 mx-auto">
               {SECTION_CONTENT.contact.subtitle}
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
             {/* Contact Info */}
             <motion.div 
               className="space-y-6"
@@ -196,7 +196,7 @@ export default function Contact() {
             >
               {/* Email */}
               <motion.div 
-                className="glass-effect rounded-xl p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
+                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
@@ -215,7 +215,7 @@ export default function Contact() {
                 </motion.div>
                 <motion.a
                   href={`mailto:${SECTION_COPY.contact.email}`}
-                  className="text-dark-600 dark:text-dark-400 hover:text-primary-500 transition-colors"
+                  className="break-all text-dark-600 dark:text-dark-400 hover:text-primary-500 transition-colors"
                   whileHover={{ x: 5 }}
                 >
                   {SECTION_COPY.contact.email}
@@ -224,7 +224,7 @@ export default function Contact() {
 
               {/* Phone */}
               <motion.div 
-                className="glass-effect rounded-xl p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
+                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
@@ -252,7 +252,7 @@ export default function Contact() {
 
               {/* Location */}
               <motion.div 
-                className="glass-effect rounded-xl p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
+                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
@@ -278,7 +278,7 @@ export default function Contact() {
 
             {/* Contact Form */}
             <motion.div 
-              className="glass-effect rounded-xl p-6 border border-dark-200 dark:border-dark-700"
+              className="glass-effect rounded-xl p-4 sm:p-6 border border-dark-200 dark:border-dark-700"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
