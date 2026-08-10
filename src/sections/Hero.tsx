@@ -1,4 +1,5 @@
-import { ArrowDown, Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { ArrowDown, Github, Twitter, Mail } from 'lucide-react'
+import { FaLinkedin } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -130,13 +131,13 @@ export default function Hero() {
                 View Resume
               </motion.a>
               <motion.button
-                onClick={() => navigate('/contact')}
-                className="button-outline cursor-pointer w-full sm:w-auto"
+                onClick={() => navigate('/recommendations')}
+                className="button-outline w-full cursor-pointer sm:w-auto"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                Contact Me
+                See Recommendations
               </motion.button>
             </motion.div>
 
@@ -167,7 +168,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <Linkedin className="w-5 h-5" />
+                <FaLinkedin className="w-5 h-5" />
               </motion.a>
               <motion.a
                 href="https://x.com/Snehilthaakur"
@@ -182,7 +183,7 @@ export default function Hero() {
                 <Twitter className="w-5 h-5" />
               </motion.a>
               <motion.a
-                href="mailto:snehil.kumar09@gmail"
+                href="mailto:snehil.kumar09@gmail.com"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                 title="Email"
                 whileHover={{ scale: 1.2, rotate: 360 }}

@@ -9,7 +9,8 @@ import HomePage from '@pages/HomePage'
 import AboutPage from '@pages/AboutPage'
 import ExperiencePage from '@pages/ExperiencePage'
 import ProjectsPage from '@pages/ProjectsPage'
-import ContactPage from '@pages/ContactPage'
+import RecommendationsPage from '@pages/RecommendationsPage'
+// import ContactPage from '@pages/ContactPage'
 
 function App() {
   const [isDark, setIsDark] = useState(true)
@@ -44,7 +45,8 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/experience" element={<ExperiencePage />} />
               <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/recommendations" element={<RecommendationsPage />} />
+              {/* <Route path="/contact" element={<ContactPage />} /> */}
             </Routes>
           </main>
 

@@ -1,4 +1,14 @@
-import { Menu, X, Moon, Sun, Home, User, Briefcase, Folder, Mail } from 'lucide-react'
+import {
+  Menu,
+  X,
+  Moon,
+  Sun,
+  Home,
+  User,
+  Briefcase,
+  Folder,
+  MessageSquare,
+} from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -25,7 +35,11 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
     { label: 'About', path: '/about', icon: User },
     { label: 'Experience', path: '/experience', icon: Briefcase },
     { label: 'Skills & Projects', path: '/projects', icon: Folder },
-    { label: 'Contact', path: '/contact', icon: Mail },
+    {
+      label: 'Recommendations',
+      path: '/recommendations',
+      icon: MessageSquare,
+    },
   ]
 
   return (

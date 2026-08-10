@@ -57,11 +57,11 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       },
     },
     {
-      id: 'nav-contact',
-      label: 'Go to Contact',
-      description: 'Get in touch',
+      id: 'nav-recommendations',
+      label: 'See Recommendations',
+      description: 'Read what colleagues say',
       action: () => {
-        navigate('/contact')
+        navigate('/recommendations')
         onClose()
       },
     },
@@ -70,7 +70,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       label: 'Copy Email',
       description: 'Copy email address to clipboard',
       action: () => {
-        navigator.clipboard.writeText('snehil@example.com')
+        navigator.clipboard.writeText('snehil.kumar09@gmail.com')
         onClose()
       },
     },

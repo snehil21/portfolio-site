@@ -1,4 +1,12 @@
-import type { Experience, Project, Skill, BlogPost, ExpertiseArea, SocialLink } from '../types'
+import type {
+  BlogPost,
+  Experience,
+  ExpertiseArea,
+  Project,
+  Recommendation,
+  Skill,
+  SocialLink,
+} from '../types'
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
@@ -252,6 +260,41 @@ export const PROJECTS: Project[] = [
     ],
     github: 'https://github.com/snehil21/Performance-Review-System',
     featured: true,
+  },
+]
+
+export const RECOMMENDATIONS: Recommendation[] = [
+  {
+    id: 'lakshmi-chandrakala',
+    initials: 'LC',
+    name: 'Lakshmi Chandrakala',
+    role: 'Engineering Manager, Cimpress India',
+    excerpt: 'When the ‘why’ is clear, he demonstrates strong analytical thinking and consistently arrives at effective, well-thought-out solutions. Snehil is a strong full-stack engineer with a high ownership mindset.',
+    linkedInUrl: 'https://www.linkedin.com/in/lakshmichandrakala/',
+  },
+  {
+    id: 'andreia-kumpera',
+    initials: 'AK',
+    name: 'Andreia Kumpera',
+    role: 'Director of Engineering - Logo & Brand',
+    excerpt: 'What stood out most was his ownership. During a team transition, Snehil stepped up to take responsibility for the front-end of the purchasing credits project.',
+    linkedInUrl: 'https://www.linkedin.com/in/akumpera/',
+  },
+  {
+    id: 'saurabh-rawat',
+    initials: 'SR',
+    name: 'Saurabh Rawat',
+    role: 'Lead Software Engineer, Cimpress India',
+    excerpt: 'He consistently approaches tasks with dedication and delivers high-quality results in a timely manner. His ability to understand requirements quickly and execute them efficiently makes him a valuable team member.',
+    linkedInUrl: 'https://www.linkedin.com/in/saurabh-rawat-76668296/',
+  },
+  {
+    id: 'nitin-magdum',
+    initials: 'NM',
+    name: 'Nitin Magdum',
+    role: 'Lead Software Engineer, Cimpress India',
+    excerpt: 'He approaches challenges with a structured mindset and delivers effective, scalable solutions. I’ve seen him take ownership of features end-to-end from design to deployment while maintaining high code quality and best practices.',
+    linkedInUrl: 'https://www.linkedin.com/in/nitin-magdum/',
   },
 ]
 

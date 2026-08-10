@@ -22,6 +22,15 @@ export interface Project {
   featured?: boolean
 }
 
+export interface Recommendation {
+  id: string
+  initials: string
+  name: string
+  role: string
+  excerpt: string
+  linkedInUrl: string
+}
+
 export interface Skill {
   category: string
   icon: SkillIconName
