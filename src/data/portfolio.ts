@@ -34,25 +34,25 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const HERO_DATA = {
   name: 'Snehil Kumar',
   title: 'Software Development Engineer I',
-  tagline: 'Building reliable backend and event-driven systems at scale',
-  intro: 'I work primarily on backend systems with Node.js, TypeScript, and AWS, with additional Java experience. My production work spans payment platforms, logistics, serverless migrations, external integrations, and high-throughput event processing.',
-  resumeUrl: 'https://drive.google.com/file/d/1T4TKJOtNiK1eKADOrSi2O3jZQQ8lGt1p/view',
+  tagline: 'Building reliable backend, distributed, and AI-assisted systems at scale',
+  intro: 'I build backend and distributed systems with Java, Spring Boot, Node.js and AWS. My production work spans payments, logistics, serverless migrations, and event-driven processing, while my applied-AI projects use LangGraph, RAG, and local LLMs with deterministic safeguards and human review.',
+  resumeUrl: 'https://drive.google.com/file/d/1XsLJSkh7YLfgMsktDtCq1mcxGV7Kcfh3/view',
   roles: [
     'Backend Engineer',
-    'Software Development Engineer',
+    'Java & Spring Boot Developer',
     'AWS & Event-Driven Systems',
-    'Full-Stack Builder',
+    'Applied AI Builder',
   ],
 }
 
 export const ABOUT_DATA = {
-  intro: 'I\'m a software development engineer with 2+ years of experience building and operating scalable backend systems.',
-  description: 'I currently contribute to deployment and release workflows for Amazon Payment Services through BCT Consulting. Previously at Cimpress, I helped migrate a shipment-processing service handling 1M+ events/day to AWS serverless, reducing infrastructure cost by 35% and latency by 50%. I enjoy competitive programming as a LeetCode Knight with a 1975 maximum rating, and I\'m turning AI and agentic-systems coursework into hands-on proof of work.',
+  intro: 'I\'m a backend-focused software development engineer with 2+ years of experience building and operating scalable systems with Java, Spring Boot, Node.js, TypeScript, and AWS.',
+  description: 'I currently work with Amazon Payment Services through BCT Consulting, strengthening security controls and AWS CDK deployment pipelines. Previously at Cimpress, I migrated a shipment-processing service handling 1M+ events/day to AWS serverless, cutting infrastructure cost by 35% and latency by 50%. Alongside production work, I build applied-AI tools with LangGraph, RAG, and local LLMs, keeping deterministic checks and human approval around risky actions.',
   interests: [
-    'Backend services and event-driven architecture',
+    'Java, Spring Boot, and Node.js backend services',
     'AWS, deployment automation, and production reliability',
     'Distributed systems and scalable system design',
-    'Applied AI agents and developer tools',
+    'Applied AI systems with verifiable, human-controlled workflows',
   ],
   hobbies: [
     'Competitive programming and structured DSA practice',
@@ -68,12 +68,10 @@ export const EXPERIENCES: Experience[] = [
     role: 'Software Development Engineer I',
     duration: 'May 2026 - Present',
     impact: [
-      'Contribute to deployment workflows for Amazon Payment Services (PayFort MENA) using AWS CodePipeline and CodeDeploy',
-      'Support version upgrades and a manual approval workflow designed to reduce the risk of unreviewed production deployments',
-      'Ramped up on platform components spanning the PayFort frontend, merchant-integration layer, and merchant back-office configuration console',
-      'Resolved version-upgrade and workflow issues while onboarding to the platform',
+      'Coordinated remediation for 3 high-severity findings spanning S3 transport security, Java XML parser hardening, and endpoint authentication; secured approved delivery timelines and authored AWS CDK remediations across 3 services',
+      'Shipped automated security scanning and manual approval gates across 2 AWS CDK pipelines, closing a Beta-to-Production deployment path that previously lacked release controls',
     ],
-    tech: ['AWS CodePipeline', 'AWS CodeDeploy', 'CI/CD', 'Deployment Workflows'],
+    tech: ['Java', 'Spring Boot', 'AWS CDK', 'AWS CodePipeline', 'CI/CD', 'Security Remediation'],
   },
   {
     id: '2',
@@ -90,6 +88,8 @@ export const EXPERIENCES: Experience[] = [
     tech: [
       'Node.js',
       'TypeScript',
+      'Java',
+      'Spring Boot',
       'AWS Lambda',
       'SQS',
       'SNS',
@@ -126,24 +126,12 @@ export const EXPERIENCES: Experience[] = [
 
 export const SKILLS: Skill[] = [
   {
-    category: 'Languages',
-    icon: 'Code2',
-    items: [
-      { name: 'C++', icon: 'SiCplusplus' },
-      { name: 'Java', icon: 'FaJava' },
-      { name: 'Python', icon: 'SiPython' },
-      { name: 'JavaScript', icon: 'SiJavascript' },
-      { name: 'TypeScript', icon: 'SiTypescript' },
-      { name: 'SQL', icon: 'Database' },
-    ],
-  },
-  {
     category: 'Backend',
     icon: 'Server',
     items: [
       { name: 'Node.js', icon: 'SiNodedotjs' },
       { name: 'NestJS', icon: 'SiNestjs' },
-      { name: 'Spring Boot (Developing)', icon: 'SiSpringboot' },
+      { name: 'Spring Boot', icon: 'SiSpringboot' },
       { name: 'Microservices', icon: 'Boxes' },
       { name: 'REST APIs', icon: 'Braces' },
       { name: 'Webhooks & Async Workflows', icon: 'Webhook' },
@@ -151,16 +139,16 @@ export const SKILLS: Skill[] = [
     ],
   },
   {
-    category: 'Frontend & Tools',
-    icon: 'AppWindow',
+    category: 'Applied AI & LLMs',
+    icon: 'BrainCircuit',
     items: [
-      { name: 'React', icon: 'SiReact' },
-      { name: 'Next.js', icon: 'SiNextdotjs' },
-      { name: 'HTML5', icon: 'SiHtml5' },
-      { name: 'CSS3', icon: 'SiCss3' },
-      { name: 'Git', icon: 'SiGit' },
-      { name: 'GitHub', icon: 'SiGithub' },
-      { name: 'Postman', icon: 'SiPostman' },
+      { name: 'Generative AI & LLMs', icon: 'BrainCircuit' },
+      { name: 'LangChain & LangGraph', icon: 'Workflow' },
+      { name: 'RAG & Vector Databases', icon: 'DatabaseZap' },
+      { name: 'Ollama & Local LLMs', icon: 'Server' },
+      { name: 'Prompt Engineering', icon: 'Braces' },
+      { name: 'LLM Evaluation & Safety', icon: 'Workflow' },
+      { name: 'Model Context Protocol (MCP)', icon: 'PlugZap' },
     ],
   },
   {
@@ -172,9 +160,20 @@ export const SKILLS: Skill[] = [
       { name: 'Amazon SNS', icon: 'RadioTower' },
       { name: 'AWS ECS/Fargate', icon: 'SiAwsfargate' },
       { name: 'AWS CodePipeline', icon: 'GitBranch' },
-      { name: 'AWS CodeDeploy', icon: 'Rocket' },
       { name: 'Docker', icon: 'SiDocker' },
       { name: 'CI/CD', icon: 'Repeat2' },
+    ],
+  },
+    {
+    category: 'Languages',
+    icon: 'Code2',
+    items: [
+      { name: 'C++', icon: 'SiCplusplus' },
+      { name: 'Java', icon: 'FaJava' },
+      { name: 'Python', icon: 'SiPython' },
+      { name: 'JavaScript', icon: 'SiJavascript' },
+      { name: 'TypeScript', icon: 'SiTypescript' },
+      { name: 'SQL', icon: 'Database' },
     ],
   },
   {
@@ -190,13 +189,15 @@ export const SKILLS: Skill[] = [
     ],
   },
   {
-    category: 'AI & LLM Coursework',
-    icon: 'BrainCircuit',
+    category: 'Frontend & Tools',
+    icon: 'AppWindow',
     items: [
-      { name: 'LangChain & LangGraph', icon: 'Workflow' },
-      { name: 'RAG & Agent Concepts', icon: 'BrainCircuit' },
-      { name: 'Vector Databases & Search', icon: 'DatabaseZap' },
-      { name: 'Model Context Protocol', icon: 'PlugZap' },
+      { name: 'React', icon: 'SiReact' },
+      { name: 'Next.js', icon: 'SiNextdotjs' },
+      { name: 'CSS3', icon: 'SiCss3' },
+      { name: 'Git', icon: 'SiGit' },
+      { name: 'GitHub', icon: 'SiGithub' },
+      { name: 'Postman', icon: 'SiPostman' },
     ],
   },
 ]
@@ -302,32 +303,32 @@ export const EXPERTISE_AREAS: ExpertiseArea[] = [
   {
     id: '1',
     title: 'Backend & Microservices',
-    description: 'Building backend services and APIs primarily with Node.js, TypeScript, and NestJS, supported by additional Java backend experience.',
+    description: 'Building backend services and microservices with Java, Spring Boot, Node.js, TypeScript, NestJS, and REST APIs.',
   },
   {
     id: '2',
+    title: 'Applied AI & Agentic Systems',
+    description: 'Building AI-assisted backend workflows with LangChain, LangGraph, local LLMs, structured outputs, deterministic safeguards, and human review.',
+  },
+  {
+    id: '3',
     title: 'Event-Driven Systems',
     description: 'Building event-driven workflows with AWS Lambda, SQS, SNS, and webhooks for loose coupling, resilience, and high-throughput processing.',
   },
   {
-    id: '3',
+    id: '4',
     title: 'Serverless & Cloud Infrastructure',
     description: 'Migrating and operating workloads across ECS/Fargate and AWS serverless, including a zero-downtime migration that reduced cost by 35% and latency by 50%.',
   },
   {
-    id: '4',
+    id: '5',
     title: 'Production Reliability',
     description: 'Supporting on-call operations, external integrations, data-processing pipelines, and production services handling more than one million events per day.',
   },
   {
-    id: '5',
+    id: '6',
     title: 'CI/CD & Deployment Workflows',
     description: 'Working with AWS CodePipeline and CodeDeploy, version upgrades, and approval workflows designed to reduce the risk of unreviewed releases.',
-  },
-  {
-    id: '6',
-    title: 'Competitive Programming',
-    description: 'LeetCode Knight with a 1975 maximum rating and more than 1,500 problems solved across coding platforms.',
   },
 ]
 
