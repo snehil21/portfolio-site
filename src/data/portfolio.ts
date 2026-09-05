@@ -39,7 +39,7 @@ export const HERO_DATA = {
   resumeUrl: 'https://drive.google.com/file/d/1XsLJSkh7YLfgMsktDtCq1mcxGV7Kcfh3/view',
   roles: [
     'Backend Engineer',
-    'Java & Spring Boot Developer',
+    'Software Developer',
     'AWS & Event-Driven Systems',
     'Applied AI Builder',
   ],
