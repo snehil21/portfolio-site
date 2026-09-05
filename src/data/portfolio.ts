@@ -194,7 +194,7 @@ export const SKILLS: Skill[] = [
     items: [
       { name: 'React', icon: 'SiReact' },
       { name: 'Next.js', icon: 'SiNextdotjs' },
-      { name: 'CSS3', icon: 'SiCss3' },
+      { name: 'Redux', icon: 'SiRedux' },
       { name: 'Git', icon: 'SiGit' },
       { name: 'GitHub', icon: 'SiGithub' },
       { name: 'Postman', icon: 'SiPostman' },
