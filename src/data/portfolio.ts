@@ -36,7 +36,7 @@ export const HERO_DATA = {
   title: 'Software Development Engineer I',
   tagline: 'Building reliable backend, distributed, and AI-assisted systems at scale',
   intro: 'I build backend and distributed systems with Java, Spring Boot, Node.js and AWS. My production work spans payments, logistics, serverless migrations, and event-driven processing, while my applied-AI projects use LangGraph, RAG, and local LLMs with deterministic safeguards and human review.',
-  resumeUrl: 'https://drive.google.com/file/d/1XsLJSkh7YLfgMsktDtCq1mcxGV7Kcfh3/view',
+  resumeUrl: 'https://drive.google.com/file/d/1m59ZsSEWFs-5PpNkuTQ7nWNUPTKiFprc/view',
   roles: [
     'Backend Engineer',
     'Software Developer',
@@ -68,6 +68,7 @@ export const EXPERIENCES: Experience[] = [
     role: 'Software Development Engineer I',
     duration: 'May 2026 - Present',
     impact: [
+      'Co-designed and implemented a shared Redis caching layer for Java payment services using Spring Cache and Redisson, with 3 custom key-generation strategies, per-region expiry, and database fallback after runtime cache-read failures.',
       'Coordinated remediation for 3 high-severity findings spanning S3 transport security, Java XML parser hardening, and endpoint authentication; secured approved delivery timelines and authored AWS CDK remediations across 3 services',
       'Shipped automated security scanning and manual approval gates across 2 AWS CDK pipelines, closing a Beta-to-Production deployment path that previously lacked release controls',
     ],
