@@ -8,7 +8,7 @@ interface SectionProps {
 
 export default function Section({ children, id, className = '' }: SectionProps) {
   return (
-    <section id={id} className={`w-full ${className}`}>
+    <section id={id} className={`w-full scroll-mt-16 ${className}`}>
       {children}
     </section>
   )

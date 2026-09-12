@@ -30,15 +30,6 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       },
     },
     {
-      id: 'nav-about',
-      label: 'Go to About',
-      description: 'Learn more about me',
-      action: () => {
-        navigate('/about')
-        onClose()
-      },
-    },
-    {
       id: 'nav-experience',
       label: 'Go to Experience',
       description: 'View my experience',
@@ -62,6 +53,15 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       description: 'Read what colleagues say',
       action: () => {
         navigate('/recommendations')
+        onClose()
+      },
+    },
+    {
+      id: 'nav-github',
+      label: 'Go to GitHub Activity',
+      description: 'View my GitHub and DSA statistics',
+      action: () => {
+        navigate('/github')
         onClose()
       },
     },

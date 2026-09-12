@@ -1,11 +1,15 @@
 import About from '@sections/About'
 import Stats from '@sections/Stats'
 
-export default function AboutPage() {
+interface AboutPageProps {
+  isDark: boolean
+}
+
+export default function AboutPage({ isDark }: AboutPageProps) {
   return (
     <>
       <About />
-      <Stats />
+      <Stats isDark={isDark} />
     </>
   )
 }

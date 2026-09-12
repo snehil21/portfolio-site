@@ -10,7 +10,7 @@ export default function Recommendations() {
   return (
     <Section
       id="recommendations"
-      className="pt-24 pb-14 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24"
+      className="bg-dark-50 pt-24 pb-14 dark:bg-dark-800/50 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24"
     >
       <Container>
         <div className="text-center">

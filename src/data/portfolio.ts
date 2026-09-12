@@ -337,29 +337,20 @@ export const BLOG_POSTS: BlogPost[] = [
   // No blog posts yet – you can add later
 ]
 
-export const COMPETITIVE_PROGRAMMING_STATS = [
-  {
-    platform: 'LeetCode',
-    handle: 'snehilthakur21',
-    rating: '1975 (max)',
-    badge: '🏅 Knight',
-    url: 'https://leetcode.com/u/snehilthakur21/',
-    icon: 'https://img.icons8.com/?size=100&id=9L16NypUzu38&format=png',
-  },
-  {
-    platform: 'CodeChef',
-    handle: 'snehil21',
-    rating: '1630 (max)',
-    badge: '⭐⭐⭐ 3-star',
-    url: 'https://www.codechef.com/users/snehil21',
-    icon: 'https://img.icons8.com/?size=100&id=LnZMjt9rZC3d&format=png',
-  },
-  {
-    platform: 'GeeksforGeeks',
-    handle: 'snehilthakur',
-    rating: '–',
-    badge: 'Top 100 (1200+ problems)',
-    url: 'https://www.geeksforgeeks.org/profile/snehilthakur',
-    icon: 'https://img.icons8.com/?size=100&id=AbQBhN9v62Ob&format=png',
-  },
-]
+export const GFG_STATS = {
+  handle: 'snehilthakur',
+  profileUrl: 'https://www.geeksforgeeks.org/profile/snehilthakur?tab=activity',
+  lastUpdated: 'September 12, 2026',
+  codingScore: 4387,
+  problemsSolved: 1289,
+  instituteRank: 1,
+  longestStreak: 89,
+  potdsSolved: 564,
+  difficulty: [
+    { label: 'School', value: 1, color: '#a5f3fc' },
+    { label: 'Basic', value: 90, color: '#d9f99d' },
+    { label: 'Easy', value: 438, color: '#a3d977' },
+    { label: 'Medium', value: 652, color: '#ffb84d' },
+    { label: 'Hard', value: 108, color: '#ff6b45' },
+  ],
+} as const

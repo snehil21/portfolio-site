@@ -10,10 +10,11 @@ import AboutPage from '@pages/AboutPage'
 import ExperiencePage from '@pages/ExperiencePage'
 import ProjectsPage from '@pages/ProjectsPage'
 import RecommendationsPage from '@pages/RecommendationsPage'
-// import ContactPage from '@pages/ContactPage'
+import ContactPage from '@pages/ContactPage'
+import GitHubPage from '@pages/GitHubPage'
 
 function App() {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
   const [showCommand, setShowCommand] = useState(false)
 
   // Keyboard shortcut for command palette
@@ -41,12 +42,13 @@ function App() {
           
           <main className="flex-grow">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
+              <Route path="/" element={<HomePage isDark={isDark} />} />
+              <Route path="/about" element={<AboutPage isDark={isDark} />} />
+              <Route path="/github" element={<GitHubPage isDark={isDark} />} />
               <Route path="/experience" element={<ExperiencePage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/recommendations" element={<RecommendationsPage />} />
-              {/* <Route path="/contact" element={<ContactPage />} /> */}
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
 

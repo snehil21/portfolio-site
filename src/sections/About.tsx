@@ -27,7 +27,7 @@ const containerVariants = {
 
 export default function About() {
   return (
-    <Section id="about" className="bg-dark-50 dark:bg-dark-800/50 py-14 sm:py-20 lg:py-24">
+    <Section id="about" className="py-14 sm:py-20 lg:py-24">
       <Container>
         <div className="grid md:grid-cols-2 gap-10 md:gap-12">
           {/* Left side */}

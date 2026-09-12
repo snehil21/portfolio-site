@@ -24,7 +24,7 @@ export const SECTION_CONTENT = {
   },
   stats: {
     title: 'Competitive Programming / DSA',
-    subtitle: 'My journey through competitive programming platforms',
+    subtitle: 'Problem-solving activity across LeetCode, CodeChef, and GeeksforGeeks',
     tableHeaders: {
       platform: 'Platform',
       handle: 'Handle',

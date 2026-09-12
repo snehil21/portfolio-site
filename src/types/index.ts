@@ -64,12 +64,3 @@ export interface SocialLink {
   url: string
   icon: string
 }
-
-export interface CompetitiveProgrammingStat {
-  platform: string
-  handle: string
-  rating: string
-  badge: string
-  url: string
-  icon: string
-}
