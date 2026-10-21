@@ -4,6 +4,54 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary-50: 255 248 240;
+  --color-primary-100: 241 229 217;
+  --color-primary-200: 233 216 197;
+  --color-primary-300: 221 177 142;
+  --color-primary-400: 215 106 54;
+  --color-primary-500: 184 79 34;
+  --color-primary-600: 168 67 29;
+  --color-primary-700: 138 53 23;
+  --color-primary-800: 111 44 22;
+  --color-primary-900: 81 32 21;
+  --color-neutral-50: 248 243 236;
+  --color-neutral-100: 245 239 231;
+  --color-neutral-200: 222 214 204;
+  --color-neutral-300: 200 190 180;
+  --color-neutral-400: 169 159 150;
+  --color-neutral-500: 118 110 103;
+  --color-neutral-600: 101 93 86;
+  --color-neutral-700: 59 53 48;
+  --color-neutral-800: 37 33 30;
+  --color-neutral-900: 31 28 26;
+  --color-neutral-950: 24 20 17;
+}
+
+.dark {
+  --color-primary-50: 255 248 240;
+  --color-primary-100: 255 234 219;
+  --color-primary-200: 248 202 170;
+  --color-primary-300: 240 160 113;
+  --color-primary-400: 228 125 71;
+  --color-primary-500: 215 106 54;
+  --color-primary-600: 194 93 48;
+  --color-primary-700: 156 68 34;
+  --color-primary-800: 122 53 31;
+  --color-primary-900: 83 39 25;
+  --color-neutral-50: 250 248 246;
+  --color-neutral-100: 240 235 231;
+  --color-neutral-200: 222 214 207;
+  --color-neutral-300: 198 188 179;
+  --color-neutral-400: 174 164 155;
+  --color-neutral-500: 128 119 111;
+  --color-neutral-600: 82 75 69;
+  --color-neutral-700: 55 50 46;
+  --color-neutral-800: 36 33 31;
+  --color-neutral-900: 26 24 22;
+  --color-neutral-950: 17 16 15;
+}
+
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
@@ -45,11 +93,11 @@ body {
 
 /* Utility classes */
 .gradient-text {
-  @apply bg-gradient-to-r from-primary-500 via-primary-400 to-blue-400 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-primary-600 via-primary-500 to-primary-300 bg-clip-text text-transparent;
 }
 
 .glass-effect {
-  @apply bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10;
+  @apply bg-[#fffdf9]/80 dark:bg-white/5 backdrop-blur-md border border-dark-200 dark:border-white/10;
 }
 
 .button-base {
@@ -83,10 +131,10 @@ body {
 /* Animations */
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 0 20px rgb(var(--color-primary-500) / 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(14, 165, 233, 0.6);
+    box-shadow: 0 0 40px rgb(var(--color-primary-500) / 0.6);
   }
 }
 

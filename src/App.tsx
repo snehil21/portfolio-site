@@ -14,8 +14,15 @@ import ContactPage from '@pages/ContactPage'
 import GitHubPage from '@pages/GitHubPage'
 
 function App() {
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(() => {
+    const savedTheme = window.localStorage.getItem('portfolio-theme')
+    return savedTheme ? savedTheme === 'dark' : true
+  })
   const [showCommand, setShowCommand] = useState(false)
+
+  React.useEffect(() => {
+    window.localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light')
+  }, [isDark])
 
   // Keyboard shortcut for command palette
   React.useEffect(() => {
@@ -37,7 +44,7 @@ function App() {
   return (
     <Router>
       <div className={isDark ? 'dark' : ''}>
-        <div className="min-h-screen bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-50 transition-colors duration-300 flex flex-col">
+        <div className="min-h-screen bg-[#fffdf9] dark:bg-dark-900 text-dark-900 dark:text-dark-50 transition-colors duration-300 flex flex-col">
           <Navbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} />
           
           <main className="flex-grow">

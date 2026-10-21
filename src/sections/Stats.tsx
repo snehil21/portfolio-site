@@ -41,7 +41,7 @@ function PlatformCard({ alt, href, name, src }: PlatformCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`View ${name} profile`}
-      className="group relative flex h-full min-h-72 items-center overflow-hidden rounded-2xl border border-dark-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-primary-500/50 hover:shadow-xl dark:border-dark-700 dark:bg-dark-900"
+      className="group relative flex h-full min-h-72 items-center overflow-hidden rounded-2xl border border-dark-200 bg-[#fffdf9] shadow-sm transition hover:-translate-y-1 hover:border-primary-500/50 hover:shadow-xl dark:border-dark-700 dark:bg-dark-900"
       variants={cardMotion}
     >
       {!isLoaded && !hasError && (
@@ -90,7 +90,7 @@ function GfgCard() {
 
   return (
     <motion.article
-      className="flex h-full min-h-72 flex-col overflow-hidden rounded-2xl border border-dark-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-xl dark:border-dark-700 dark:bg-dark-900"
+      className="flex h-full min-h-72 flex-col overflow-hidden rounded-2xl border border-dark-200 bg-[#fffdf9] p-4 shadow-sm transition hover:-translate-y-1 hover:border-emerald-500/50 hover:shadow-xl dark:border-dark-700 dark:bg-dark-900"
       variants={cardMotion}
     >
       <div className="mb-3 flex items-start justify-between gap-3">
@@ -116,7 +116,7 @@ function GfgCard() {
           role="img"
           aria-label={`${GFG_STATS.problemsSolved} GeeksforGeeks problems solved`}
         >
-          <div className="grid h-[72%] w-[72%] place-items-center rounded-full bg-white text-center dark:bg-dark-900">
+          <div className="grid h-[72%] w-[72%] place-items-center rounded-full bg-[#fffdf9] text-center dark:bg-dark-900">
             <div>
               <p className="text-2xl font-bold leading-none text-dark-900 dark:text-white">{GFG_STATS.problemsSolved}</p>
               <p className="mt-1 text-[0.7rem] leading-tight text-dark-500 dark:text-dark-400">problems solved</p>

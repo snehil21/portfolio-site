@@ -214,7 +214,7 @@ export default function Hero() {
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               />
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-transparent rounded-3xl"
+                className="absolute inset-0 bg-gradient-to-tr from-primary-400/20 to-transparent rounded-3xl"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
               />

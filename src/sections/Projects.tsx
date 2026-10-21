@@ -28,7 +28,7 @@ const itemVariants = {
 }
 
 export default function Projects() {
-  const [filter, setFilter] = useState('all')
+  const [filter, setFilter] = useState('featured')
 
   const featured = PROJECTS.filter((p) => p.featured)
   const displayed = filter === 'featured' ? featured : PROJECTS
@@ -52,18 +52,6 @@ export default function Projects() {
           transition={{ delay: 0.2 }}
         >
           <motion.button
-            onClick={() => setFilter('all')}
-            className={`w-full sm:w-auto px-4 py-2 rounded-lg font-medium transition-all ${
-              filter === 'all'
-                ? 'button-primary'
-                : 'button-secondary'
-            }`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {SECTION_CONTENT.projects.filterAllLabel} ({PROJECTS.length})
-          </motion.button>
-          <motion.button
             onClick={() => setFilter('featured')}
             className={`w-full sm:w-auto px-4 py-2 rounded-lg font-medium transition-all ${
               filter === 'featured'
@@ -75,15 +63,27 @@ export default function Projects() {
           >
             {SECTION_CONTENT.projects.filterFeaturedLabel} ({featured.length})
           </motion.button>
+          <motion.button
+            onClick={() => setFilter('all')}
+            className={`w-full sm:w-auto px-4 py-2 rounded-lg font-medium transition-all ${
+              filter === 'all'
+                ? 'button-primary'
+                : 'button-secondary'
+            }`}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {SECTION_CONTENT.projects.filterAllLabel} ({PROJECTS.length})
+          </motion.button>
         </motion.div>
 
         {/* Projects Grid */}
-        <motion.div 
+        <motion.div
+          key={filter}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate="visible"
         >
           {displayed.map((project) => (
             <motion.div
