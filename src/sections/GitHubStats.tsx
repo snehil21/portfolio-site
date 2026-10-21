@@ -67,9 +67,9 @@ function GitHubCard({ alt, className = '', src }: GitHubCardProps) {
 }
 
 export default function GitHubStats({ isDark }: GitHubStatsProps) {
-  const theme = isDark ? 'holi' : 'github'
+  const theme = isDark ? 'slateorange' : 'graywhite'
   const cardUrl = (card: string, extraParameters = '') =>
-    `${cardApiUrl}/${card}?username=snehil21&theme=${theme}${extraParameters}`
+    `${cardApiUrl}/${card}?username=snehil21&theme=${theme}&animation=sequence${extraParameters}`
 
   return (
     <Section id="github" className="py-14 sm:py-20 lg:py-24">

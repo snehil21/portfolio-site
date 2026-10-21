@@ -273,7 +273,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
 
       <motion.div
         aria-hidden="true"
-        className="absolute bottom-0 left-0 h-0.5 origin-left bg-gradient-to-r from-primary-500 to-blue-400"
+        className="absolute bottom-0 left-0 h-0.5 origin-left bg-gradient-to-r from-primary-600 to-primary-300"
         animate={{ scaleX: scrollProgress }}
         transition={{ duration: 0.12, ease: 'easeOut' }}
         style={{ width: '100%' }}

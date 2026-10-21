@@ -25,13 +25,13 @@ export default function Recommendations() {
           {RECOMMENDATIONS.map((recommendation) => (
             <article
               key={recommendation.id}
-              className="glass-effect group relative flex h-full flex-col overflow-hidden rounded-xl border border-dark-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#0A66C2]/50 hover:shadow-lg dark:border-dark-700"
+              className="glass-effect group relative flex h-full flex-col overflow-hidden rounded-xl border border-dark-200 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-500/50 hover:shadow-lg dark:border-dark-700"
             >
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#0A66C2] to-sky-400 opacity-70" />
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary-600 to-primary-300 opacity-80" />
               <div className="flex items-start gap-4">
                 <div
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0A66C2]/10 text-sm font-bold text-[#0A66C2] ring-1 ring-[#0A66C2]/25 dark:bg-[#0A66C2]/20 dark:text-sky-300"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-500/10 text-sm font-bold text-primary-600 ring-1 ring-primary-500/25 dark:bg-primary-500/20 dark:text-primary-300"
                 >
                   {recommendation.initials}
                 </div>
@@ -46,7 +46,7 @@ export default function Recommendations() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View ${recommendation.name}'s LinkedIn profile`}
-                      className="ml-auto inline-flex shrink-0 items-center gap-2 rounded-full bg-[#0A66C2] px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#004182] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-900"
+                      className="ml-auto inline-flex shrink-0 items-center gap-2 rounded-full bg-primary-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-primary-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-900"
                     >
                       <FaLinkedin aria-hidden="true" className="h-4 w-4 shrink-0" />
                       <span className="hidden sm:inline">View LinkedIn profile</span>
@@ -58,7 +58,7 @@ export default function Recommendations() {
                 </div>
               </div>
 
-              <blockquote className="mt-5 border-l-2 border-[#0A66C2]/40 pl-4 text-sm leading-relaxed text-dark-700 dark:text-dark-300 sm:text-base">
+              <blockquote className="mt-5 border-l-2 border-primary-500/40 pl-4 text-sm leading-relaxed text-dark-700 dark:text-dark-300 sm:text-base">
                 “{recommendation.excerpt}”
               </blockquote>
             </article>
@@ -71,7 +71,7 @@ export default function Recommendations() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View all recommendations on LinkedIn"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#0A66C2] px-5 py-3 font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-[#004182] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A66C2] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-900 sm:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary-600 px-5 py-3 font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary-700 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-900 sm:w-auto"
           >
             <FaLinkedin aria-hidden="true" className="h-5 w-5" />
             <span>View all recommendations on LinkedIn</span>
