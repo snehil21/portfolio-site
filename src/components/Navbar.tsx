@@ -20,27 +20,27 @@ interface NavbarProps {
 
 const navItems = [
   {
-    id: 'home', label: 'Home', path: '/', sectionId: 'hero',
+    id: 'home', label: 'Home', sectionId: 'hero',
     trackedSections: ['hero'], icon: Home,
   },
   {
-    id: 'projects', label: 'Skills & Projects', path: '/#projects', sectionId: 'projects',
+    id: 'projects', label: 'Skills & Projects', sectionId: 'skills',
     trackedSections: ['projects', 'expertise', 'skills'], icon: Folder,
   },
   {
-    id: 'experience', label: 'Experience', path: '/experience', sectionId: 'experience',
+    id: 'experience', label: 'Experience', sectionId: 'experience',
     trackedSections: ['experience'], icon: Briefcase,
   },
   {
-    id: 'recommendations', label: 'Recommendations', path: '/#recommendations',
+    id: 'recommendations', label: 'Recommendations',
     sectionId: 'recommendations', trackedSections: ['recommendations'], icon: MessageSquare,
   },
   {
-    id: 'github', label: 'GitHub', path: '/github', sectionId: 'github',
+    id: 'github', label: 'GitHub', sectionId: 'github',
     trackedSections: ['github', 'stats'], icon: Github,
   },
   {
-    id: 'contact', label: 'Contact', path: '/contact', sectionId: 'contact',
+    id: 'contact', label: 'Contact', sectionId: 'contact',
     trackedSections: ['contact'], icon: Mail,
   },
 ]
@@ -57,12 +57,6 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
 
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
     setScrollProgress(scrollableHeight > 0 ? Math.min(window.scrollY / scrollableHeight, 1) : 0)
-
-    if (location.pathname !== '/') {
-      const routeItem = navItems.find((item) => item.path === location.pathname)
-      setActiveSection(routeItem?.id ?? 'home')
-      return
-    }
 
     const marker = window.scrollY + Math.min(window.innerHeight * 0.32, 260)
     let currentSection = 'home'
@@ -103,9 +97,6 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
     }
   }, [updateScrollState])
 
-  const getDestination = (path: string, sectionId: string) =>
-    location.pathname === '/' ? `/#${sectionId}` : path
-
   const handleHomeSectionClick = (
     event: MouseEvent<HTMLAnchorElement>,
     sectionId: string,
@@ -135,7 +126,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
         }`}
       >
         <div className="flex justify-between items-center h-16">
-          <Link to="/" aria-label="Go to the home page" className="flex items-center space-x-2">
+          <Link to="/#hero" aria-label="Go to the home page" className="flex items-center space-x-2">
             <motion.div
               className="w-9 h-9 rounded-full overflow-hidden ring-2 ring-primary-500/70 shadow-sm"
               whileHover={{ scale: 1.08 }}
@@ -179,7 +170,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
                     />
                   )}
                   <Link
-                    to={getDestination(item.path, item.sectionId)}
+                    to={`/#${item.sectionId}`}
                     onClick={(event) => handleHomeSectionClick(event, item.sectionId)}
                     aria-current={isActive ? 'page' : undefined}
                     className={`relative z-10 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 group ${
@@ -252,7 +243,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
                   transition={{ delay: isOpen ? idx * 0.05 : 0 }}
                 >
                   <Link
-                    to={getDestination(item.path, item.sectionId)}
+                    to={`/#${item.sectionId}`}
                     aria-current={isActive ? 'page' : undefined}
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive

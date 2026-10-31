@@ -25,7 +25,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       label: 'Go to Home',
       description: 'Navigate to home',
       action: () => {
-        navigate('/')
+        navigate('/#hero')
         onClose()
       },
     },
@@ -34,7 +34,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       label: 'Go to Experience',
       description: 'View my experience',
       action: () => {
-        navigate('/experience')
+        navigate('/#experience')
         onClose()
       },
     },
@@ -61,7 +61,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       label: 'Go to GitHub Activity',
       description: 'View my GitHub and DSA statistics',
       action: () => {
-        navigate('/github')
+        navigate('/#github')
         onClose()
       },
     },

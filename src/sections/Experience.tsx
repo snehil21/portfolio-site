@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
+import BorderBeam from '@components/BorderBeam'
 import Container from '@components/Container'
 import Section from '@components/Section'
 import { EXPERIENCES } from '@data/portfolio'
@@ -83,10 +84,16 @@ export default function Experience() {
               />
 
               <motion.article
-                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all duration-300 border border-dark-200 dark:border-dark-700 hover:border-primary-500/50"
+                className="group relative isolate overflow-hidden rounded-2xl border border-dark-200 bg-white p-4 shadow-sm transition-colors hover:border-primary-400/50 dark:border-dark-700 dark:bg-dark-900 sm:p-6"
                 variants={itemVariants}
                 whileHover={{ y: -3 }}
               >
+              <BorderBeam delay={index * 0.7} />
+              <div
+                aria-hidden="true"
+                className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary-400/10 blur-2xl transition-transform duration-300 group-hover:scale-125"
+              />
+              <div className="relative z-10">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -155,6 +162,7 @@ export default function Experience() {
                   ))}
                 </motion.div>
               )}
+              </div>
               </motion.article>
             </div>
           ))}

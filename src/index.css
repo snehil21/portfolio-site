@@ -172,6 +172,7 @@ body {
     transparent 360deg
   );
   animation: border-beam-spin 5s linear infinite;
+  animation-delay: var(--border-beam-delay, 0s);
 }
 
 @keyframes border-beam-spin {

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import BorderBeam from '@components/BorderBeam'
 import Container from '@components/Container'
 import Section from '@components/Section'
 import { SKILLS } from '@data/portfolio'
@@ -62,15 +63,21 @@ export default function Skills() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {SKILLS.map((skillGroup) => {
+          {SKILLS.map((skillGroup, groupIndex) => {
             const IconComponent = SKILL_ICON_MAP[skillGroup.icon]
             return (
               <motion.div
                 key={skillGroup.category}
-                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg transition-shadow"
+                className="group relative isolate overflow-hidden rounded-2xl border border-dark-200 bg-white p-4 shadow-sm transition-colors hover:border-primary-400/50 dark:border-dark-700 dark:bg-dark-900 sm:p-6"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
+                <BorderBeam delay={groupIndex * 0.7} />
+                <div
+                  aria-hidden="true"
+                  className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary-400/10 blur-2xl transition-transform duration-300 group-hover:scale-125"
+                />
+                <div className="relative z-10">
                 <motion.h3 
                   className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2"
                   whileHover={{ x: 5 }}
@@ -114,6 +121,7 @@ export default function Skills() {
                     )
                   })}
                 </motion.div>
+                </div>
               </motion.div>
             )
           })}

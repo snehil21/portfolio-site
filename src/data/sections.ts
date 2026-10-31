@@ -37,7 +37,6 @@ export const SECTION_CONTENT = {
     title: 'Get In Touch',
     subtitle: 'Interested in backend engineering, distributed systems, or developer tools? Let\'s connect.',
     emailLabel: 'Email',
-    phoneLabel: 'Phone',
     locationLabel: 'Location',
     nameLabel: 'Name',
     messageLabel: 'Message',
@@ -52,7 +51,6 @@ export const SECTION_CONTENT = {
 export const SECTION_COPY = {
   contact: {
     email: 'snehil.kumar09@gmail.com',
-    phone: '+1 (234) 567-890',
     location: 'Bengaluru, Karnataka, India',
   },
 }

@@ -1,64 +1,118 @@
-import { Activity, Braces, Cpu, Database, RadioTower } from 'lucide-react'
-import { motion, useReducedMotion } from 'framer-motion'
+import {
+  Boxes,
+  CloudCog,
+  CreditCard,
+  createLucideIcon,
+  GitBranch,
+  RadioTower,
+  ShieldCheck,
+  Truck,
+  type LucideIcon,
+} from 'lucide-react'
+import { motion } from 'framer-motion'
 import BlurFade from '@components/BlurFade'
+import BorderBeam from '@components/BorderBeam'
 import Container from '@components/Container'
 import Section from '@components/Section'
 import { EXPERTISE_AREAS } from '@data/portfolio'
 
-const flowNodes = [
-  { label: 'API', detail: 'Requests', Icon: Braces },
-  { label: 'Queue', detail: 'Events', Icon: RadioTower },
-  { label: 'Workers', detail: 'Processing', Icon: Cpu },
-  { label: 'Data', detail: 'State', Icon: Database },
-  { label: 'Observe', detail: 'Signals', Icon: Activity },
+const CpuAi = createLucideIcon('CpuAi', [
+  ['path', { d: 'M12 20v2', key: '1' }],
+  ['path', { d: 'M12 2v2', key: '2' }],
+  ['path', { d: 'M16 9v6', key: '3' }],
+  ['path', { d: 'M17 20v2', key: '4' }],
+  ['path', { d: 'M17 2v2', key: '5' }],
+  ['path', { d: 'M2 12h2', key: '6' }],
+  ['path', { d: 'M2 17h2', key: '7' }],
+  ['path', { d: 'M2 7h2', key: '8' }],
+  ['path', { d: 'M20 12h2', key: '9' }],
+  ['path', { d: 'M20 17h2', key: '10' }],
+  ['path', { d: 'M20 7h2', key: '11' }],
+  ['path', { d: 'M7 20v2', key: '12' }],
+  ['path', { d: 'M7 2v2', key: '13' }],
+  ['path', { d: 'M8 13h4', key: '14' }],
+  ['path', { d: 'M8 15v-4a2 2 0 0 1 4 0v4', key: '15' }],
+  ['rect', { x: '4', y: '4', width: '16', height: '16', rx: '2', key: '16' }],
+])
+
+const BroomSparkles = createLucideIcon('BroomSparkles', [
+  ['path', { d: 'M11 2v2', key: '1' }],
+  ['path', { d: 'M12 3h-2', key: '2' }],
+  ['path', { d: 'M13.5 10.5 22 2', key: '3' }],
+  ['path', { d: 'M14.734 13.841a2 2 0 0 0-.314-2.42L12.58 9.58a2 2 0 0 0-2.421-.314l-7.657 4.461A1 1 0 0 0 2.3 15.3l6.403 6.403a1 1 0 0 0 1.571-.204z', key: '4' }],
+  ['path', { d: 'M20 15v4', key: '5' }],
+  ['path', { d: 'M22 17h-4', key: '6' }],
+  ['path', { d: 'M4 4v4', key: '7' }],
+  ['path', { d: 'm5 18 2-2', key: '8' }],
+  ['path', { d: 'M6 6H2', key: '9' }],
+  ['path', { d: 'm7.699 10.7 5.602 5.601', key: '10' }],
+])
+
+const domainPillars = [
+  {
+    title: 'Fulfillment & Logistics',
+    description: 'High-volume shipment processing, carrier integrations, and multi-format logistics pipelines.',
+    Icon: Truck,
+  },
+  {
+    title: 'Payments',
+    description: 'Checkout, payment webhooks, credit allocation, and resilient payment services.',
+    Icon: CreditCard,
+  },
+  {
+    title: 'Generative AI',
+    description: 'GenAI Logomaker, prompt optimisation, AI-assisted design workflows, and generative product experiences.',
+    Icon: BroomSparkles,
+  },
 ]
 
-function SystemFlow() {
-  const shouldReduceMotion = useReducedMotion()
+const expertiseIcons: Record<string, LucideIcon> = {
+  '1': Boxes,
+  '2': CpuAi,
+  '3': RadioTower,
+  '4': CloudCog,
+  '5': ShieldCheck,
+  '6': GitBranch,
+}
 
+const expertiseCards = [
+  ...domainPillars,
+  ...EXPERTISE_AREAS.map((area) => ({
+    title: area.title,
+    description: area.description,
+    Icon: expertiseIcons[area.id],
+  })),
+]
+
+interface ExpertiseCardProps {
+  title: string
+  description: string
+  Icon: LucideIcon
+  beamDelay?: number
+}
+
+function ExpertiseCard({ title, description, Icon, beamDelay = 0 }: ExpertiseCardProps) {
   return (
-    <div className="overflow-x-auto rounded-2xl border border-dark-200 bg-white shadow-sm dark:border-dark-700 dark:bg-dark-900">
-      <div className="relative min-w-[720px] px-10 py-9 lg:px-14 lg:py-11">
-        <svg
-          aria-hidden="true"
-          className="absolute inset-x-[9%] top-1/2 h-16 w-[82%] -translate-y-1/2 overflow-visible"
-          viewBox="0 0 1000 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="expertise-beam" x1="0" x2="1">
-              <stop offset="0%" stopColor="rgb(var(--color-primary-300))" />
-              <stop offset="50%" stopColor="rgb(var(--color-primary-400))" />
-              <stop offset="100%" stopColor="rgb(var(--color-primary-600))" />
-            </linearGradient>
-          </defs>
-          <path d="M 15 50 H 985" stroke="currentColor" strokeWidth="2" className="text-dark-200 dark:text-dark-700" />
-          <motion.path
-            d="M 15 50 H 985"
-            fill="none"
-            stroke="url(#expertise-beam)"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="75 210"
-            initial={{ strokeDashoffset: 0 }}
-            animate={shouldReduceMotion ? undefined : { strokeDashoffset: -285 }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: 'linear' }}
-          />
-        </svg>
-
-        <div className="relative z-10 flex items-center justify-between gap-8">
-          {flowNodes.map(({ label, detail, Icon }) => (
-            <div key={label} className="flex w-24 flex-col items-center text-center">
-              <div className="grid h-14 w-14 place-items-center rounded-2xl border border-primary-400/25 bg-white text-primary-600 shadow-[0_8px_30px_rgb(var(--color-primary-400)/0.12)] dark:bg-dark-950 dark:text-primary-300">
-                <Icon className="h-6 w-6" aria-hidden="true" />
-              </div>
-              <p className="mt-3 text-sm font-bold text-dark-900 dark:text-white">{label}</p>
-              <p className="text-xs text-dark-500 dark:text-dark-400">{detail}</p>
-            </div>
-          ))}
+    <motion.article
+      className="group relative h-full overflow-hidden rounded-2xl border border-dark-200 bg-white p-6 shadow-sm transition-colors hover:border-primary-400/50 dark:border-dark-700 dark:bg-dark-900"
+      whileHover={{ y: -4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+    >
+      <BorderBeam delay={beamDelay} />
+      <div
+        aria-hidden="true"
+        className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary-400/10 blur-2xl transition-transform duration-300 group-hover:scale-125"
+      />
+      <div className="relative">
+        <div className="flex items-center gap-4">
+          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-primary-400/25 bg-primary-100/70 text-primary-700 dark:bg-primary-400/10 dark:text-primary-300">
+            <Icon className="h-6 w-6" aria-hidden="true" />
+          </div>
+          <h3 className="text-xl font-bold text-dark-900 dark:text-white">{title}</h3>
         </div>
+        <p className="mt-5 leading-relaxed text-dark-600 dark:text-dark-400">{description}</p>
       </div>
-    </div>
+    </motion.article>
   )
 }
 
@@ -69,30 +123,19 @@ export default function Expertise() {
         <BlurFade>
           <div className="max-w-3xl">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary-700 dark:text-primary-300">
-              From request to production signal
+              Business domains
             </p>
             <h2 className="section-title">Domain Expertise</h2>
             <p className="section-subtitle mb-8 sm:mb-10">
-              Backend systems designed around asynchronous processing, durable state, and observable operations.
+              Product areas where I have built and operated backend systems in real-world environments.
             </p>
           </div>
         </BlurFade>
 
-        <BlurFade delay={0.08}>
-          <SystemFlow />
-        </BlurFade>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {EXPERTISE_AREAS.map((area, index) => (
-            <BlurFade key={area.id} delay={0.06 + index * 0.04} className="h-full">
-              <article className="glass-effect h-full rounded-xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary-400/40 hover:shadow-lg sm:p-6">
-                <h3 className="mb-3 text-lg font-bold text-dark-900 dark:text-white sm:text-xl">
-                  {area.title}
-                </h3>
-                <p className="leading-relaxed text-dark-600 dark:text-dark-400">
-                  {area.description}
-                </p>
-              </article>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {expertiseCards.map((card, index) => (
+            <BlurFade key={card.title} delay={0.04 + index * 0.035} className="h-full">
+              <ExpertiseCard {...card} beamDelay={index * 0.55} />
             </BlurFade>
           ))}
         </div>
