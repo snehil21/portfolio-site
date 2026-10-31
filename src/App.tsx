@@ -15,7 +15,7 @@ import GitHubPage from '@pages/GitHubPage'
 function App() {
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme')
-    return savedTheme ? savedTheme === 'dark' : true
+    return savedTheme ? savedTheme === 'dark' : false
   })
   const [showCommand, setShowCommand] = useState(false)
 
