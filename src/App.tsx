@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Routes, Route } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import Navbar from '@components/Navbar'
 import Footer from '@sections/Footer'
 import CommandPalette from '@components/CommandPalette'
@@ -8,15 +9,13 @@ import CommandPalette from '@components/CommandPalette'
 import HomePage from '@pages/HomePage'
 import AboutPage from '@pages/AboutPage'
 import ExperiencePage from '@pages/ExperiencePage'
-import ProjectsPage from '@pages/ProjectsPage'
-import RecommendationsPage from '@pages/RecommendationsPage'
 import ContactPage from '@pages/ContactPage'
 import GitHubPage from '@pages/GitHubPage'
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme')
-    return savedTheme ? savedTheme === 'dark' : true
+    return savedTheme ? savedTheme === 'dark' : false
   })
   const [showCommand, setShowCommand] = useState(false)
 
@@ -42,28 +41,30 @@ function App() {
   }, [showCommand])
 
   return (
-    <Router>
-      <div className={isDark ? 'dark' : ''}>
-        <div className="min-h-screen bg-[#fffdf9] dark:bg-dark-900 text-dark-900 dark:text-dark-50 transition-colors duration-300 flex flex-col">
-          <Navbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} />
-          
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<HomePage isDark={isDark} />} />
-              <Route path="/about" element={<AboutPage isDark={isDark} />} />
-              <Route path="/github" element={<GitHubPage isDark={isDark} />} />
-              <Route path="/experience" element={<ExperiencePage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/recommendations" element={<RecommendationsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </main>
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <div className={isDark ? 'dark' : ''}>
+          <div className="min-h-screen bg-white dark:bg-dark-900 text-dark-900 dark:text-dark-50 transition-colors duration-300 flex flex-col">
+            <Navbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} />
 
-          <Footer />
-          <CommandPalette isOpen={showCommand} onClose={() => setShowCommand(false)} />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<HomePage isDark={isDark} />} />
+                <Route path="/about" element={<AboutPage isDark={isDark} />} />
+                <Route path="/github" element={<GitHubPage isDark={isDark} />} />
+                <Route path="/experience" element={<ExperiencePage />} />
+                <Route path="/projects" element={<Navigate to="/#projects" replace />} />
+                <Route path="/recommendations" element={<Navigate to="/#recommendations" replace />} />
+                <Route path="/contact" element={<ContactPage />} />
+              </Routes>
+            </main>
+
+            <Footer />
+            <CommandPalette isOpen={showCommand} onClose={() => setShowCommand(false)} />
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </MotionConfig>
   )
 }
 

@@ -1,8 +1,6 @@
 import {
   Menu,
   X,
-  Moon,
-  Sun,
   Home,
   Github,
   Briefcase,
@@ -13,6 +11,7 @@ import {
 import { MouseEvent, useCallback, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import AnimatedThemeToggler from '@components/AnimatedThemeToggler'
 
 interface NavbarProps {
   isDark: boolean
@@ -22,18 +21,18 @@ interface NavbarProps {
 const navItems = [
   {
     id: 'home', label: 'Home', path: '/', sectionId: 'hero',
-    trackedSections: ['hero', 'expertise'], icon: Home,
+    trackedSections: ['hero'], icon: Home,
+  },
+  {
+    id: 'projects', label: 'Skills & Projects', path: '/#projects', sectionId: 'projects',
+    trackedSections: ['projects', 'expertise', 'skills'], icon: Folder,
   },
   {
     id: 'experience', label: 'Experience', path: '/experience', sectionId: 'experience',
     trackedSections: ['experience'], icon: Briefcase,
   },
   {
-    id: 'projects', label: 'Skills & Projects', path: '/projects', sectionId: 'skills',
-    trackedSections: ['skills', 'projects'], icon: Folder,
-  },
-  {
-    id: 'recommendations', label: 'Recommendations', path: '/recommendations',
+    id: 'recommendations', label: 'Recommendations', path: '/#recommendations',
     sectionId: 'recommendations', trackedSections: ['recommendations'], icon: MessageSquare,
   },
   {
@@ -67,11 +66,19 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
 
     const marker = window.scrollY + Math.min(window.innerHeight * 0.32, 260)
     let currentSection = 'home'
+    let currentOffset = -1
 
     navItems.forEach((item) => {
       item.trackedSections.forEach((sectionId) => {
         const section = document.getElementById(sectionId)
-        if (section && section.offsetTop <= marker) currentSection = item.id
+        if (
+          section &&
+          section.offsetTop <= marker &&
+          section.offsetTop > currentOffset
+        ) {
+          currentSection = item.id
+          currentOffset = section.offsetTop
+        }
       })
     })
 
@@ -108,7 +115,9 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
 
     event.preventDefault()
     window.history.replaceState(null, '', `/#${sectionId}`)
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    window.requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    })
   }
 
   return (
@@ -120,7 +129,11 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div
+        className={`mx-auto px-4 transition-[max-width,padding] duration-300 sm:px-6 lg:px-8 ${
+          isScrolled ? 'max-w-6xl' : 'max-w-7xl'
+        }`}
+      >
         <div className="flex justify-between items-center h-16">
           <Link to="/" aria-label="Go to the home page" className="flex items-center space-x-2">
             <motion.div
@@ -199,20 +212,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
               <span>K</span>
             </motion.div>
 
-            <motion.button
-              onClick={onThemeToggle}
-              aria-label={isDark ? 'Use light theme' : 'Use dark theme'}
-              className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
-              whileHover={{ scale: 1.1, rotate: 20 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 300 }}
-            >
-              {isDark ? (
-                <Sun className="w-5 h-5 text-yellow-500" />
-              ) : (
-                <Moon className="w-5 h-5 text-dark-700" />
-              )}
-            </motion.button>
+            <AnimatedThemeToggler isDark={isDark} onToggle={onThemeToggle} />
 
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
