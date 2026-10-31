@@ -5,51 +5,51 @@
 @tailwind utilities;
 
 :root {
-  --color-primary-50: 255 248 240;
-  --color-primary-100: 241 229 217;
-  --color-primary-200: 233 216 197;
-  --color-primary-300: 221 177 142;
-  --color-primary-400: 215 106 54;
-  --color-primary-500: 184 79 34;
-  --color-primary-600: 168 67 29;
-  --color-primary-700: 138 53 23;
-  --color-primary-800: 111 44 22;
-  --color-primary-900: 81 32 21;
-  --color-neutral-50: 248 243 236;
-  --color-neutral-100: 245 239 231;
-  --color-neutral-200: 222 214 204;
-  --color-neutral-300: 200 190 180;
-  --color-neutral-400: 169 159 150;
-  --color-neutral-500: 118 110 103;
-  --color-neutral-600: 101 93 86;
-  --color-neutral-700: 59 53 48;
-  --color-neutral-800: 37 33 30;
-  --color-neutral-900: 31 28 26;
-  --color-neutral-950: 24 20 17;
+  --color-primary-50: 246 248 247;
+  --color-primary-100: 235 239 237;
+  --color-primary-200: 215 223 219;
+  --color-primary-300: 169 184 178;
+  --color-primary-400: 130 150 142;
+  --color-primary-500: 95 115 106;
+  --color-primary-600: 86 100 95;
+  --color-primary-700: 71 83 78;
+  --color-primary-800: 58 69 64;
+  --color-primary-900: 37 44 41;
+  --color-neutral-50: 250 250 250;
+  --color-neutral-100: 244 244 245;
+  --color-neutral-200: 228 228 231;
+  --color-neutral-300: 212 212 216;
+  --color-neutral-400: 161 161 170;
+  --color-neutral-500: 113 113 122;
+  --color-neutral-600: 82 82 91;
+  --color-neutral-700: 63 63 70;
+  --color-neutral-800: 39 39 42;
+  --color-neutral-900: 24 24 27;
+  --color-neutral-950: 9 9 11;
 }
 
 .dark {
-  --color-primary-50: 255 248 240;
-  --color-primary-100: 255 234 219;
-  --color-primary-200: 248 202 170;
-  --color-primary-300: 240 160 113;
-  --color-primary-400: 228 125 71;
-  --color-primary-500: 215 106 54;
-  --color-primary-600: 194 93 48;
-  --color-primary-700: 156 68 34;
-  --color-primary-800: 122 53 31;
-  --color-primary-900: 83 39 25;
-  --color-neutral-50: 250 248 246;
-  --color-neutral-100: 240 235 231;
-  --color-neutral-200: 222 214 207;
-  --color-neutral-300: 198 188 179;
-  --color-neutral-400: 174 164 155;
-  --color-neutral-500: 128 119 111;
-  --color-neutral-600: 82 75 69;
-  --color-neutral-700: 55 50 46;
-  --color-neutral-800: 36 33 31;
-  --color-neutral-900: 26 24 22;
-  --color-neutral-950: 17 16 15;
+  --color-primary-50: 246 248 247;
+  --color-primary-100: 235 239 237;
+  --color-primary-200: 215 223 219;
+  --color-primary-300: 169 184 178;
+  --color-primary-400: 130 150 142;
+  --color-primary-500: 95 115 106;
+  --color-primary-600: 86 100 95;
+  --color-primary-700: 71 83 78;
+  --color-primary-800: 58 69 64;
+  --color-primary-900: 37 44 41;
+  --color-neutral-50: 250 250 250;
+  --color-neutral-100: 244 244 245;
+  --color-neutral-200: 228 228 231;
+  --color-neutral-300: 212 212 216;
+  --color-neutral-400: 161 161 170;
+  --color-neutral-500: 113 113 122;
+  --color-neutral-600: 82 82 91;
+  --color-neutral-700: 39 39 42;
+  --color-neutral-800: 24 24 27;
+  --color-neutral-900: 9 9 11;
+  --color-neutral-950: 0 0 0;
 }
 
 /* Smooth scroll behavior */
@@ -62,16 +62,39 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Selection color */
 ::selection {
-  @apply bg-primary-500 text-white;
+  @apply bg-primary-400 text-dark-950;
 }
 
 /* Base styles */
 body {
   @apply font-sans antialiased overflow-x-hidden;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
 }
 
 /* Custom scrollbar */
@@ -97,7 +120,71 @@ body {
 }
 
 .glass-effect {
-  @apply bg-[#fffdf9]/80 dark:bg-white/5 backdrop-blur-md border border-dark-200 dark:border-white/10;
+  @apply bg-white/80 dark:bg-white/5 backdrop-blur-md border border-dark-200 dark:border-white/10;
+}
+
+.magic-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.magic-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  content: '';
+  opacity: var(--magic-opacity, 0);
+  background: radial-gradient(
+    320px circle at var(--magic-x, 50%) var(--magic-y, 50%),
+    rgb(var(--color-primary-400) / 0.16),
+    transparent 62%
+  );
+  transition: opacity 180ms ease;
+}
+
+.border-beam {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  padding: 1px;
+  pointer-events: none;
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.border-beam::before {
+  position: absolute;
+  inset: -160%;
+  content: '';
+  background: conic-gradient(
+    from 90deg,
+    transparent 0deg 285deg,
+    rgb(var(--color-primary-300) / 0.2) 305deg,
+    rgb(var(--color-primary-400)) 330deg,
+    rgb(255 255 255 / 0.95) 342deg,
+    transparent 360deg
+  );
+  animation: border-beam-spin 5s linear infinite;
+}
+
+@keyframes border-beam-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-beam::before {
+    animation: none;
+    transform: rotate(25deg);
+  }
 }
 
 .button-base {
@@ -105,7 +192,7 @@ body {
 }
 
 .button-primary {
-  @apply button-base bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg hover:shadow-primary-500/50;
+  @apply button-base border border-primary-300 bg-primary-400 text-dark-950 shadow-[0px_-1px_0px_0px_rgb(255_255_255/0.38)_inset,0px_1px_0px_0px_rgb(255_255_255/0.38)_inset] hover:-translate-y-0.5 hover:bg-primary-300 hover:shadow-lg hover:shadow-primary-500/30;
 }
 
 .button-secondary {

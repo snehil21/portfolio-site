@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
 import Container from '@components/Container'
 import Section from '@components/Section'
 import { EXPERIENCES } from '@data/portfolio'
@@ -16,15 +17,27 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: { duration: 0.6 },
   },
 }
 
 export default function Experience() {
+  const timelineRef = useRef<HTMLDivElement>(null)
+  const shouldReduceMotion = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 75%', 'end 60%'],
+  })
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 28,
+    mass: 0.25,
+  })
+
   return (
     <Section id="experience" className="py-14 sm:py-20 lg:py-24">
       <Container>
@@ -41,19 +54,39 @@ export default function Experience() {
         </motion.div>
 
         <motion.div
-          className="space-y-6 sm:space-y-8"
+          ref={timelineRef}
+          className="relative space-y-6 sm:space-y-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {EXPERIENCES.map((exp) => (
+          <div
+            aria-hidden="true"
+            className="absolute bottom-8 left-[0.4375rem] top-8 w-px bg-dark-200 dark:bg-dark-700 sm:left-[0.6875rem]"
+          >
             <motion.div
-              key={exp.id}
-              className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all duration-300 border border-dark-200 dark:border-dark-700 hover:border-primary-500/50"
-              variants={itemVariants}
-              whileHover={{ y: -5 }}
-            >
+              className="h-full w-full origin-top bg-gradient-to-b from-primary-200 via-primary-400 to-primary-600"
+              style={{ scaleY: shouldReduceMotion ? 1 : smoothProgress }}
+            />
+          </div>
+
+          {EXPERIENCES.map((exp, index) => (
+            <div key={exp.id} className="relative pl-9 sm:pl-14">
+              <motion.span
+                aria-hidden="true"
+                className="absolute left-0 top-7 z-10 grid h-4 w-4 place-items-center rounded-full border-2 border-white bg-primary-400 shadow-[0_0_0_4px_rgb(var(--color-primary-400)/0.18)] dark:border-dark-900 sm:left-1 sm:h-4 sm:w-4"
+                initial={{ opacity: 0, scale: 0.6 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.8 }}
+                transition={{ delay: index * 0.1, type: 'spring', stiffness: 300, damping: 22 }}
+              />
+
+              <motion.article
+                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg transition-all duration-300 border border-dark-200 dark:border-dark-700 hover:border-primary-500/50"
+                variants={itemVariants}
+                whileHover={{ y: -3 }}
+              >
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -91,13 +124,11 @@ export default function Experience() {
                     variants={itemVariants}
                     custom={itemIdx}
                   >
-                    <motion.span 
+                    <span
                       className="text-primary-500 font-bold text-lg flex-shrink-0"
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: itemIdx * 0.2 }}
                     >
                       →
-                    </motion.span>
+                    </span>
                     <p className="text-dark-700 dark:text-dark-300">{item}</p>
                   </motion.div>
                 ))}
@@ -124,7 +155,8 @@ export default function Experience() {
                   ))}
                 </motion.div>
               )}
-            </motion.div>
+              </motion.article>
+            </div>
           ))}
         </motion.div>
       </Container>

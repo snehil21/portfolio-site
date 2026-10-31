@@ -1,8 +1,7 @@
 import { ArrowDown, Github, Twitter, Mail } from 'lucide-react'
 import { FaLinkedin } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import Container from '@components/Container'
 import Section from '@components/Section'
 import { HERO_DATA } from '@data/portfolio'
@@ -38,14 +37,16 @@ const heroTitleVariants = {
 
 export default function Hero() {
   const [currentRole, setCurrentRole] = useState(0)
-  const navigate = useNavigate()
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
+    if (shouldReduceMotion) return undefined
+
     const interval = setInterval(() => {
       setCurrentRole((prev) => (prev + 1) % HERO_DATA.roles.length)
     }, 3000)
     return () => clearInterval(interval)
-  }, [])
+  }, [shouldReduceMotion])
 
   return (
     <Section
@@ -65,7 +66,7 @@ export default function Hero() {
             <motion.div variants={itemVariants}>
               <motion.p 
                 className="text-primary-500 font-semibold mb-2"
-                whileHover={{ x: 10 }}
+                whileHover={{ x: 4 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 Welcome 👋
@@ -103,42 +104,38 @@ export default function Hero() {
               className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4"
               variants={itemVariants}
             >
-              <motion.button
-                onClick={() => navigate('/projects')}
+              <motion.a
+                href="/#projects"
                 className="button-primary group cursor-pointer w-full sm:w-auto"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 View Projects
-                <motion.span
-                  className="inline-block ml-2 w-4 h-4"
-                  animate={{ y: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
+                <span className="inline-block ml-2 w-4 h-4">
                   <ArrowDown className="w-4 h-4" />
-                </motion.span>
-              </motion.button>
+                </span>
+              </motion.a>
               <motion.a
                 href={HERO_DATA.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="button-secondary w-full sm:w-auto text-center"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 View Resume
               </motion.a>
-              <motion.button
-                onClick={() => navigate('/recommendations')}
+              <motion.a
+                href="/#recommendations"
                 className="button-outline w-full cursor-pointer sm:w-auto"
-                whileHover={{ scale: 1.05, y: -2 }}
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 See Recommendations
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Social Links */}
@@ -152,7 +149,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                 title="GitHub"
-                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
@@ -164,7 +161,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                 title="LinkedIn"
-                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
@@ -176,7 +173,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                 title="Twitter"
-                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
@@ -186,7 +183,7 @@ export default function Hero() {
                 href="mailto:snehil.kumar09@gmail.com"
                 className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
                 title="Email"
-                whileHover={{ scale: 1.2, rotate: 360 }}
+                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
@@ -202,18 +199,17 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <motion.div 
+            <motion.div
               className="relative w-64 h-64"
               animate={{ y: [0, 20, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             >
-              {/* Animated background */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-primary-500/5 rounded-3xl animate-glow"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               />
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-gradient-to-tr from-primary-400/20 to-transparent rounded-3xl"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
@@ -237,28 +233,16 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator */}
-        <motion.div 
-          className="hidden sm:block absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
+        <div className="hidden sm:block absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2">
           <div className="flex flex-col items-center space-y-2">
-            <motion.span 
-              className="text-sm text-dark-600 dark:text-dark-400"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
+            <span className="text-sm text-dark-600 dark:text-dark-400">
               Scroll to explore
-            </motion.span>
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
+            </span>
+            <div>
               <ArrowDown className="w-4 h-4 text-primary-500" />
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </Container>
     </Section>
   )

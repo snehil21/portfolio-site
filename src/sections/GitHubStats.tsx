@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github } from 'lucide-react'
 import Container from '@components/Container'
@@ -22,13 +22,6 @@ function GitHubCard({ alt, className = '', src }: GitHubCardProps) {
   const [failedSrc, setFailedSrc] = useState<string | null>(null)
   const isLoaded = loadedSrc === src
   const hasError = failedSrc === src
-
-  useEffect(() => {
-    if (isLoaded || hasError) return
-
-    const timeoutId = window.setTimeout(() => setFailedSrc(src), 20000)
-    return () => window.clearTimeout(timeoutId)
-  }, [hasError, isLoaded, src])
 
   return (
     <motion.a
@@ -67,15 +60,21 @@ function GitHubCard({ alt, className = '', src }: GitHubCardProps) {
 }
 
 export default function GitHubStats({ isDark }: GitHubStatsProps) {
-  const theme = isDark ? 'slateorange' : 'graywhite'
+  const theme = isDark ? 'github_dark' : 'github'
+  const themeColors = isDark
+    ? '&title_color=fafafa&text_color=a1a1aa&bg_color=09090b&border_color=27272a&icon_color=a9b8b2&chart_color=a9b8b2'
+    : '&title_color=18181b&text_color=52525b&bg_color=ffffff&border_color=e4e4e7&icon_color=56645f&chart_color=82968e'
   const cardUrl = (card: string, extraParameters = '') =>
-    `${cardApiUrl}/${card}?username=snehil21&theme=${theme}&animation=sequence${extraParameters}`
+    `${cardApiUrl}/${card}?username=snehil21&theme=${theme}&animation=sequence${themeColors}${extraParameters}`
 
   return (
     <Section id="github" className="py-14 sm:py-20 lg:py-24">
       <Container>
         <div className="mb-8 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
           <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-primary-700 dark:text-primary-300">
+              Open-source footprint
+            </p>
             <h2 className="section-title">GitHub Activity</h2>
             <p className="section-subtitle">
               A live view of my public repositories, contributions, languages, and collaboration.

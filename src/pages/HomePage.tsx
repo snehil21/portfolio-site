@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Hero from '@sections/Hero'
 import Expertise from '@sections/Expertise'
 import GitHubStats from '@sections/GitHubStats'
@@ -13,13 +15,26 @@ interface HomePageProps {
 }
 
 export default function HomePage({ isDark }: HomePageProps) {
+  const location = useLocation()
+
+  useEffect(() => {
+    const sectionId = location.hash.slice(1)
+    if (!sectionId) return undefined
+
+    const frameId = window.requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    })
+
+    return () => window.cancelAnimationFrame(frameId)
+  }, [location.hash])
+
   return (
     <>
       <Hero />
+      <Projects />
       <Expertise />
       <Experience />
       <Skills />
-      <Projects />
       <Recommendations />
       <GitHubStats isDark={isDark} />
       <Stats isDark={isDark} />

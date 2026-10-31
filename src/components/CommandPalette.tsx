@@ -43,7 +43,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       label: 'Go to Projects',
       description: 'View my projects',
       action: () => {
-        navigate('/projects')
+        navigate('/#projects')
         onClose()
       },
     },
@@ -52,7 +52,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
       label: 'See Recommendations',
       description: 'Read what colleagues say',
       action: () => {
-        navigate('/recommendations')
+        navigate('/#recommendations')
         onClose()
       },
     },
@@ -154,7 +154,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                   onClick={cmd.action}
                   className={`w-full px-4 py-2 text-left transition-colors ${
                     idx === selected
-                      ? 'bg-primary-500 text-white'
+                      ? 'bg-primary-400 text-dark-950'
                       : 'text-dark-900 dark:text-dark-50 hover:bg-dark-100 dark:hover:bg-dark-800'
                   }`}
                 >
@@ -162,7 +162,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
                   <div
                     className={`text-sm ${
                       idx === selected
-                        ? 'text-primary-100'
+                        ? 'text-dark-700'
                         : 'text-dark-500 dark:text-dark-400'
                     }`}
                   >

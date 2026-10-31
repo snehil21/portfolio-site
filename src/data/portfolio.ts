@@ -64,7 +64,7 @@ export const ABOUT_DATA = {
 export const EXPERIENCES: Experience[] = [
   {
     id: '1',
-    company: 'Amazon (via BCT Consulting)',
+    company: 'Amazon',
     role: 'Software Development Engineer I',
     duration: 'May 2026 - Present',
     impact: [
