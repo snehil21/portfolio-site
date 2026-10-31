@@ -31,10 +31,10 @@ export default function HomePage({ isDark }: HomePageProps) {
   return (
     <>
       <Hero />
-      <Projects />
       <Expertise />
       <Experience />
       <Skills />
+      <Projects />
       <Recommendations />
       <GitHubStats isDark={isDark} />
       <Stats isDark={isDark} />

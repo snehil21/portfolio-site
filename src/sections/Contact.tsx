@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
+import BorderBeam from '@components/BorderBeam'
 import Container from '@components/Container'
+import LocationMap from '@components/LocationMap'
 import Section from '@components/Section'
-import { Send, Mail, Phone } from 'lucide-react'
+import { ArrowUpRight, Mail, MapPin, Send } from 'lucide-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { SECTION_CONTENT, SECTION_COPY } from '@data/sections'
 
@@ -55,26 +57,6 @@ const validateField = (field: FormField, value: string) => {
   }
 
   return ''
-}
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
 }
 
 export default function Contact() {
@@ -172,7 +154,7 @@ export default function Contact() {
   return (
     <Section id="contact" className="py-14 sm:py-20 lg:py-24">
       <Container>
-        <div className="max-w-3xl mx-auto">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -185,105 +167,82 @@ export default function Contact() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-            {/* Contact Info */}
-            <motion.div 
-              className="space-y-6"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
+          <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
+            <motion.article
+              className="group relative isolate overflow-hidden rounded-2xl border border-dark-200 bg-white shadow-sm dark:border-dark-700 dark:bg-dark-900"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              {/* Email */}
-              <motion.div 
-                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
-                variants={itemVariants}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <motion.div 
-                  className="flex items-center gap-4 mb-3"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
+              <BorderBeam delay={0.8} />
+              <LocationMap />
+              <div className="relative z-10 border-t border-dark-200 p-5 dark:border-dark-700 sm:p-6">
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex items-start gap-4">
+                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-primary-400/25 bg-primary-100/70 text-primary-700 dark:bg-primary-400/10 dark:text-primary-300">
+                      <MapPin className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-700 dark:text-primary-300">
+                        Based in
+                      </p>
+                      <h3 className="mt-1 text-xl font-bold text-dark-900 dark:text-white">
+                        Bengaluru, India
+                      </h3>
+                      <p className="mt-1 text-sm text-dark-500 dark:text-dark-400">
+                        Karnataka · India Standard Time
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Bengaluru%2C+Karnataka%2C+India"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-dark-600 transition-colors hover:text-primary-600 dark:text-dark-300 dark:hover:text-primary-300"
                   >
-                    <Mail className="w-6 h-6 text-primary-500" />
-                  </motion.div>
-                  <h3 className="text-lg font-bold">{SECTION_CONTENT.contact.emailLabel}</h3>
-                </motion.div>
-                <motion.a
+                    View map
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </div>
+
+                <a
                   href={`mailto:${SECTION_COPY.contact.email}`}
-                  className="break-all text-dark-600 dark:text-dark-400 hover:text-primary-500 transition-colors"
-                  whileHover={{ x: 5 }}
+                  className="mt-6 flex items-center gap-3 rounded-xl border border-dark-200 bg-dark-50 p-4 transition-colors hover:border-primary-400/40 hover:bg-primary-50 dark:border-dark-700 dark:bg-dark-950 dark:hover:bg-primary-400/5"
                 >
-                  {SECTION_COPY.contact.email}
-                </motion.a>
-              </motion.div>
-
-              {/* Phone */}
-              <motion.div 
-                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
-                variants={itemVariants}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <motion.div 
-                  className="flex items-center gap-4 mb-3"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  <motion.div
-                    animate={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    <Phone className="w-6 h-6 text-primary-500" />
-                  </motion.div>
-                  <h3 className="text-lg font-bold">{SECTION_CONTENT.contact.phoneLabel}</h3>
-                </motion.div>
-                <motion.a
-                  href={`tel:${SECTION_COPY.contact.phone.replace(/\s/g, '')}`}
-                  className="text-dark-600 dark:text-dark-400 hover:text-primary-500 transition-colors"
-                  whileHover={{ x: 5 }}
-                >
-                  {SECTION_COPY.contact.phone}
-                </motion.a>
-              </motion.div>
-
-              {/* Location */}
-              <motion.div 
-                className="glass-effect rounded-xl p-4 sm:p-6 hover:shadow-lg border border-dark-200 dark:border-dark-700 hover:border-primary-500/50 transition-all"
-                variants={itemVariants}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <motion.div 
-                  className="flex items-center gap-4 mb-3"
-                  whileHover={{ x: 5 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  <motion.span 
-                    className="text-2xl"
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    📍
-                  </motion.span>
-                  <h3 className="text-lg font-bold">{SECTION_CONTENT.contact.locationLabel}</h3>
-                </motion.div>
-                <p className="text-dark-600 dark:text-dark-400">
-                  {SECTION_COPY.contact.location}
-                </p>
-              </motion.div>
-            </motion.div>
+                  <Mail className="h-5 w-5 shrink-0 text-primary-600 dark:text-primary-300" aria-hidden="true" />
+                  <span className="min-w-0">
+                    <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-dark-500 dark:text-dark-400">
+                      Email
+                    </span>
+                    <span className="mt-0.5 block truncate font-medium text-dark-800 dark:text-dark-100">
+                      {SECTION_COPY.contact.email}
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </motion.article>
 
             {/* Contact Form */}
             <motion.div 
-              className="glass-effect rounded-xl p-4 sm:p-6 border border-dark-200 dark:border-dark-700"
+              className="group relative isolate overflow-hidden rounded-2xl border border-dark-200 bg-white p-5 shadow-sm dark:border-dark-700 dark:bg-dark-900 sm:p-7"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
+              <BorderBeam delay={1.6} />
+              <div
+                aria-hidden="true"
+                className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary-400/10 blur-2xl transition-transform duration-300 group-hover:scale-125"
+              />
+              <div className="relative z-10">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-dark-900 dark:text-white">Start a conversation</h3>
+                <p className="mt-2 text-sm leading-relaxed text-dark-600 dark:text-dark-400">
+                  Share a little context about the role, project, or engineering problem.
+                </p>
+              </div>
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
                 {/* Name */}
                 <motion.div
@@ -445,6 +404,7 @@ export default function Contact() {
                   </p>
                 )}
               </form>
+              </div>
             </motion.div>
           </div>
         </div>
