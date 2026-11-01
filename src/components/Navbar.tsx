@@ -4,7 +4,9 @@ import {
   Home,
   Github,
   Briefcase,
+  Code2,
   Folder,
+  Layers3,
   MessageSquare,
   Mail,
 } from 'lucide-react'
@@ -24,12 +26,20 @@ const navItems = [
     trackedSections: ['hero'], icon: Home,
   },
   {
-    id: 'projects', label: 'Skills & Projects', sectionId: 'skills',
-    trackedSections: ['projects', 'expertise', 'skills'], icon: Folder,
+    id: 'expertise', label: 'Expertise', sectionId: 'expertise',
+    trackedSections: ['expertise'], icon: Layers3,
   },
   {
     id: 'experience', label: 'Experience', sectionId: 'experience',
     trackedSections: ['experience'], icon: Briefcase,
+  },
+  {
+    id: 'skills', label: 'Skills', sectionId: 'skills',
+    trackedSections: ['skills'], icon: Code2,
+  },
+  {
+    id: 'projects', label: 'Projects', sectionId: 'projects',
+    trackedSections: ['projects'], icon: Folder,
   },
   {
     id: 'recommendations', label: 'Recommendations',
@@ -120,11 +130,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
           : 'bg-transparent'
       }`}
     >
-      <div
-        className={`mx-auto px-4 transition-[max-width,padding] duration-300 sm:px-6 lg:px-8 ${
-          isScrolled ? 'max-w-6xl' : 'max-w-7xl'
-        }`}
-      >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/#hero" aria-label="Go to the home page" className="flex items-center space-x-2">
             <motion.div
@@ -149,7 +155,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
             </motion.span>
           </Link>
 
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden items-center space-x-0.5 xl:flex">
             {navItems.map((item, idx) => {
               const IconComponent = item.icon
               const isActive = activeSection === item.id
@@ -173,7 +179,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
                     to={`/#${item.sectionId}`}
                     onClick={(event) => handleHomeSectionClick(event, item.sectionId)}
                     aria-current={isActive ? 'page' : undefined}
-                    className={`relative z-10 px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 group ${
+                    className={`group relative z-10 flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium transition-colors ${
                       isActive
                         ? 'text-primary-600 dark:text-primary-300'
                         : 'text-dark-700 dark:text-dark-300 hover:bg-dark-100 dark:hover:bg-dark-800'
@@ -195,7 +201,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
 
           <div className="flex items-center space-x-2">
             <motion.div
-              className="hidden xl:flex items-center space-x-2 px-3 py-1 rounded-lg bg-dark-100 dark:bg-dark-800 text-xs text-dark-600 dark:text-dark-400"
+              className="hidden 2xl:flex items-center space-x-2 px-3 py-1 rounded-lg bg-dark-100 dark:bg-dark-800 text-xs text-dark-600 dark:text-dark-400"
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 300 }}
             >
@@ -209,7 +215,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={isOpen}
-              className="lg:hidden p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800"
+              className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 xl:hidden"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -228,7 +234,7 @@ export default function Navbar({ isDark, onThemeToggle }: NavbarProps) {
             closed: { opacity: 0, height: 0 },
           }}
           transition={{ duration: 0.3 }}
-          className="lg:hidden overflow-hidden"
+          className="overflow-hidden xl:hidden"
         >
           <div className="pb-4 space-y-2">
             {navItems.map((item, idx) => {
