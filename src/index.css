@@ -56,6 +56,12 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
+  scrollbar-width: none;
+  overflow-x: clip;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,7 +86,9 @@ html {
 
 /* Base styles */
 body {
-  @apply font-sans antialiased overflow-x-hidden;
+  max-width: 100%;
+  overflow-x: clip;
+  @apply font-sans antialiased;
 }
 
 ::view-transition-old(root),
@@ -95,23 +103,6 @@ body {
 
 ::view-transition-new(root) {
   z-index: 9999;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  @apply w-2;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-dark-100 dark:bg-dark-800;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-dark-400 dark:bg-dark-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-dark-500 dark:bg-dark-500;
 }
 
 /* Utility classes */
